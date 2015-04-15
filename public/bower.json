@@ -1,0 +1,13 @@
+{
+  "name": "kc.mobiletarget.me",
+  "version": "0.1.0",
+  "author": "JPDigital",
+  "dependencies": {
+    "modernizr": "~2",
+    "jquery": "~2",
+    "bootstrap-sass-official": "~3",
+    "ember": "~1",
+    "handlebars": "~1",
+    "ember-data": "~1"
+  }
+}

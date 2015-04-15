@@ -1,0 +1,19 @@
+@import "variables";
+@import "compass/css3";
+@import "../packages/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "fonts";
+@import "browsehappy";
+
+body {
+  padding-top: 50px;
+}
+
+#content {
+  h4.resum {
+    padding: 5px 10px
+  }
+}
+
+#footer {
+  margin-top: 40px;
+}

@@ -1,0 +1,31 @@
+@import "styles";
+
+#highlight {
+  padding-top: 10px;
+  margin-bottom: 40px;
+
+  .messages,
+  .users {
+    display: block;
+
+    .icon {
+      display: block;
+      margin: 4px 5px 0 0;
+      width: 10px;
+      height: 10px;
+      float: left;
+    }
+  }
+
+  .messages .icon {
+    background-color: rgb(220,220,220);
+  }
+
+  .users .icon {
+    background-color: rgb(131,139,131);
+  }
+}
+
+#content {
+  margin-bottom: 40px;
+}
