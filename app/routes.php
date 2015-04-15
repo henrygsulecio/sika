@@ -62,7 +62,7 @@ Route::get('repartidor', array(
 
 Route::post('repartidor', array(
   'before' => 'auth.fake',
-  'as' => 'cliente',
+  'as' => 'repartidor',
   'uses' => 'PageController@updateRepartidor',
 ));
 
