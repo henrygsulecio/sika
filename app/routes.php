@@ -44,17 +44,7 @@ Route::get('user/{id}', array(
 ))
 ->where('id', '[0-9]+');
 
-Route::get('reguardStatus/{id}', array(
-  'before' => 'auth.fake',
-  'uses' => 'PageController@showReguardStatus',
-))
-->where('id', '[0-9]+');
 
-Route::post('reguardStatus', array(
-  'before' => 'auth.fake',
-  'as' => 'reguardStatus',
-  'uses' => 'PageController@updateStatusReguard',
-));
 
 
 Route::get('search/{phone}', array(
@@ -74,18 +64,7 @@ Route::get('info', array(
   'uses' => 'PageController@showInfo',
 ));
 
-Route::get('reguard/{mes}/{ano}', array(
-  'before' => 'auth.fake',
-  'as' => 'reguard',
-  'uses' => 'PageController@showReguard',
-));
 
-
-Route::get('record/{phone}', array(
-  'before' => 'auth.fake',
-  'uses' => 'PageController@showUserRecord',
-))
-->where('id', '[0-9]+');
 
 Route::post('user', array(
   'before' => 'auth.fake',
@@ -99,65 +78,6 @@ Route::get('report/{mesu}/{mesd}/{mest}/{ano}', array(
   'uses' => 'PageController@showReport',
 ));
 
-Route::get('rango', array(
-  'before' => 'auth.fake',
-  
-  'uses' => 'PageController@ShowRango',
-));
-
-Route::get('rangoMes', array(
-  'before' => 'auth.fake',
-  
-  'uses' => 'PageController@ShowRangoMes',
-));
-
-Route::get('messages', array(
-  'before' => 'auth.fake',
-  'as' => 'messages',
-  'uses' => 'PageController@showMessages',
-));
-
-Route::get('exportinfo', array(
-  'before' => 'auth.fake',
- 
-  'uses' => 'PageController@exelInfo',
-));
-
-Route::get('exportMessage', array(
-  'before' => 'auth.fake',
- 
-  'uses' => 'PageController@exelMessage',
-));
-
-Route::get('exportUsuarios', array(
-  'before' => 'auth.fake',
- 
-  'uses' => 'PageController@exelUser',
-));
-
-Route::get('exportReguards/{mes}/{ano}', array(
-  'before' => 'auth.fake',
- 
-  'uses' => 'PageController@exelReguards',
-));
-
-Route::get('exportReport/{mesu}/{mesd}/{mest}/{ano}', array(
-  'before' => 'auth.fake',
- 
-  'uses' => 'PageController@exelReport',
-));
-
-Route::get('exportBirthday', array(
-  'before' => 'auth.fake',
- 
-  'uses' => 'PageController@exelBirthday',
-));
-
-Route::get('birthday', array(
-  'before' => 'auth.fake',
-  
-  'uses' => 'PageController@showBirthday',
-));
 
 
 Route::get('receivesms/{phone}/{shornumber}/{telco}/{msg}', array(

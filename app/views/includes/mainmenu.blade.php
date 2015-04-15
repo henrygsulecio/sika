@@ -16,11 +16,7 @@
         @else
 
           <li><a href="{{ URL::route('info') }}">Info</a></li>
-          <li><a href="/rango">Report</a></li>
-          <li><a href="/rangoMes">Asistencia Vial</a></li>
-          <li><a href="{{ URL::route('users') }}">Users</a></li>
-          <li><a href="/birthday">Cumpleaños</a></li>
-          <li><a href="{{ URL::route('messages') }}">Call Center</a></li>
+         
           <li><a href="{{ URL::route('dologout') }}">Logout</a></li>
         @endif
       </ul>
