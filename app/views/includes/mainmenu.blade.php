@@ -17,6 +17,7 @@
 
           <li><a href="{{ URL::route('info') }}">Info</a></li>
          <li><a href="{{ URL::route('cliente') }}">Add Cliente</a></li>
+         <li><a href="{{ URL::route('repartidor') }}">Add Repartidor</a></li>
           <li><a href="{{ URL::route('dologout') }}">Logout</a></li>
         @endif
       </ul>

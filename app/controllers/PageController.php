@@ -101,6 +101,18 @@ public function showCliente()
       //'user' => $user,
     ));
   }
+
+  public function showRepartidor()
+  {
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.repartidor', array(
+      'page' => 'repartidor',
+      //'user' => $user,
+    ));
+  }
     public function showReguardStatus($id)
   {
     // get Reguards data

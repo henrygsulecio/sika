@@ -55,6 +55,17 @@ Route::post('cliente', array(
   'uses' => 'PageController@updateCliente',
 ));
 
+Route::get('repartidor', array(
+  'before' => 'auth.fake',
+  'uses' => 'PageController@showRepartidor',
+));
+
+Route::post('repartidor', array(
+  'before' => 'auth.fake',
+  'as' => 'cliente',
+  'uses' => 'PageController@updateRepartidor',
+));
+
 
 
 Route::get('search/{phone}', array(
