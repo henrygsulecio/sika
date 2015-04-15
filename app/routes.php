@@ -13,7 +13,7 @@
 Route::get('/', array(
   'before' => 'auth.fake',
   'as' => 'home',
-  'uses' => 'PageController@showDashboard',
+  'uses' => 'PageController@showInfo',
 ));
 
 Route::get('login', array(
