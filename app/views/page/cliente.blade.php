@@ -108,7 +108,7 @@ function goBack() {
 <div class="form-group">
         <label for="location" class="col-sm-2 control-label">Ubicaci&oacute;n</label>
         <div class="col-sm-8">
-          <label for="location" class="col-sm-4 control-label">Actual: {{ $user->location }}</label>
+          <label for="location" class="col-sm-4 control-label">Actual: </label>
           <select name="location" id="location"  class="form-control">
               <option value="ninguno">ninguno</option>
               <option value="Peten">Petén</option>
