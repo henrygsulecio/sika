@@ -49,7 +49,7 @@ Route::get('cliente', array(
   'uses' => 'PageController@showCliente',
 ));
 
-Route::post('user', array(
+Route::post('cliente', array(
   'before' => 'auth.fake',
   'as' => 'cliente',
   'uses' => 'PageController@updateCliente',
