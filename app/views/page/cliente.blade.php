@@ -137,12 +137,7 @@ function goBack() {
         </div>
       </div>
 
-      <!--<div class="form-group">
-        <label for="location" class="col-sm-2 control-label">Ubicaci&oacute;n</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="location" id="location" placeholder="Ubicaci&oacute;n" value="{{ $user->location }}">
-        </div>
-      </div>-->
+      
 
       <div class="form-group">
         <label for="tons" class="col-sm-2 control-label">Tons</label>
