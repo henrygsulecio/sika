@@ -89,6 +89,18 @@ class PageController extends BaseController {
     ));
   }
 
+
+public function showCliente()
+  {
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.cliente', array(
+      'page' => 'cliente',
+      //'user' => $user,
+    ));
+  }
     public function showReguardStatus($id)
   {
     // get Reguards data

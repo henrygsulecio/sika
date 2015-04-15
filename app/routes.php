@@ -44,6 +44,16 @@ Route::get('user/{id}', array(
 ))
 ->where('id', '[0-9]+');
 
+Route::get('cliente', array(
+  'before' => 'auth.fake',
+  'uses' => 'PageController@showCliente',
+));
+
+Route::post('user', array(
+  'before' => 'auth.fake',
+  'as' => 'cliente',
+  'uses' => 'PageController@updateCliente',
+));
 
 
 

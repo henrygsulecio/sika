@@ -19,7 +19,7 @@
   <div class="col-xs-12">
     <div class="col-xs-12">
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('exportinfo') }}"><span class"glyphicon glyphicon-star">Agregar Cliente</span></a>
+         <a href="{{ URL::to('cliente/') }}"><span class"glyphicon glyphicon-star">Agregar Cliente</span></a>
     </button>
   </div>
 </div>
