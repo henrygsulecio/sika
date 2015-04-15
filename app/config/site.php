@@ -2,6 +2,6 @@
 
 return array(
   'author' => 'MobileTarget',
-  'company' => 'Mobil Oil',
+  'company' => 'SIKA',
   'googleanalytics' => 'UA-XXXXX-X',
 );

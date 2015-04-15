@@ -15,6 +15,16 @@
          }
      </script>
 </div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="col-xs-12">
+    <button type="button" class="btn btn-default btn-lg">
+         <a href="{{ URL::to('exportinfo') }}"><span class"glyphicon glyphicon-star">Agregar Cliente</span></a>
+    </button>
+  </div>
+</div>
+</div>
+
 
 <div class="row">
   <div class="col-xs-12"><h4 class="resum bg-primary">Info</h4></div>
@@ -24,19 +34,14 @@
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
       <tr>
         <th>Fecha</th>
-        <th>Apellido</th>
+        <th>Codigo</th>
         <th>Nombre</th>
-        <th>Tel&eacute;fono</th>
+        <th>Direcci&oacute;n</th>
         
         
-        <th>Compra Galon</th>
-        <th>Compra Cubeta</th>
-        <th>Puntos</th>
-        <th>Recarga</th>
-        <th>Departamento</th>
-        <th>Tipo veh&iacute;culo</th>
-        <th>Toneladas</th>
-        <th>Comentarios</th>
+        <th>Cuenta</th>
+        <th>Pedido</th>
+        
         <th>Acciones</th>
         
         
@@ -54,11 +59,6 @@
         <td>{{ $user->galones}}</td>
         <td>{{ $user->cubetas}}</td>
         <td>{{ ($user->galones*20) + ($user->cubetas*50)}}</td>
-        <td>{{"Q", ($user->galones*5) + ($user->cubetas*25),".00"}}</td>
-        <td>{{ $user->location}}</td>
-        <td>{{ $user->vehicle}}</td>
-        <td>{{ $user->tons}}</td>
-        <td>{{ $user->comments}}</td>
         
         <td><a href="{{ URL::to('user/' . $user->user_id) }}"><span class="label label-info">Actualizar</span></a></td>
       </tr>
