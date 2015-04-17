@@ -77,6 +77,12 @@ Route::post('ruta', array(
   'uses' => 'PageController@updateRuta',
 ));
 
+Route::any('rutad/{id}', array(
+  'before' => 'auth.fake',
+  'as' => 'rutad',
+  'uses' => 'PageController@deleteRuta',
+));
+
 Route::get('ruta/{id}', array(
   'before' => 'auth.fake',
   'uses' => 'PageController@showRutas',

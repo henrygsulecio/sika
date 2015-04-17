@@ -57,7 +57,7 @@
         
         
         <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a>
-            <a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
+            <a href="{{ URL::to('rutad/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
       @endforeach

@@ -642,6 +642,77 @@ public function showCliente()
   }
 
 
+  public function deleteRuta($id)
+  {
+
+    $clientes = DB::table('clientes')
+      ->selectRaw('*')
+      
+      ->get();
+
+      $repartidores = DB::table('repartidores')
+      ->selectRaw('*')
+      
+      ->get();
+
+    // parameters
+    $now = date('Y-m-d H:i:s');
+   // $id = Input::get('ruta_id', 0);
+    $cliente_id = trim(Input::get('cliente_id', ''));
+    $repartidor_id = trim(Input::get('repartidor_id', ''));
+    $pedido = trim(Input::get('pedido', ''));
+     $nfactura = trim(Input::get('nfactura', ''));
+      $norden = trim(Input::get('norden', ''));
+       $nhr = trim(Input::get('nhr', ''));
+     
+     Log::info('id: ' . $id);
+     Log::info('cliente_id: ' .  $cliente_id);
+     Log::info('repartidor_id: ' . $repartidor_id);
+     Log::info('pedido: ' . $pedido);
+// get user data
+    $user = DB::table('rutas')
+      ->selectRaw('*')
+      ->where('ruta_id', $id)
+      ->first();
+ // update
+    DB::beginTransaction();
+    try {
+     // Session::flash('result', 'Los datos han sido eliminados con EXITO');
+      if ($user) {
+        Session::flash('result', 'Los datos han sido eliminados con EXITO');
+        // update
+        DB::table('rutas')
+          ->where('ruta_id', $id)
+          ->delete();
+          
+      }
+
+    
+
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+    }
+  //else de validacion
+
+    
+
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.ruta', array(
+      'page' => 'ruta',
+      'clientes' => $clientes,
+      'repartidores' => $repartidores,
+     
+    ));
+     
+   
+  }
+
+
 
   public function SearchData($phone){
 
