@@ -14,14 +14,41 @@ class PageController extends BaseController {
   public function doLogin()
   {
     // getting parameters
+    $user = trim(Input::get('user', ''));
+    $password = trim(Input::get('password', ''));
+
+    Log::info("user: " . print_r($user, true));
+    Log::info("password: " . print_r($password, true));
+
     //$user;
     //$password;
+    $users = DB::table('usuarios')
+             ->selectRaw('usuarios.nickname, usuarios.password')
+             ->where('usuarios.nickname', '=',$user)
+             ->where('usuarios.password', '=',$password)
+              ->get();
+             //->first();
+    if($users)
+    {
+      
+            Session::put('userLogged', 1);
+            Session::regenerate();
+
+            return Redirect::route('home');
+           
+         
+        
+      }
+       
+    
+      else
+    {
+      return Redirect::route('login');
+
+    }
 
     // user login
-    Session::put('userLogged', 1);
-    Session::regenerate();
-
-    return Redirect::route('home');
+   
   }
 
   public function doLogout()

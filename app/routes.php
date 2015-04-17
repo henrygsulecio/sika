@@ -22,7 +22,7 @@ Route::get('login', array(
   'uses' => 'PageController@showLogin',
 ));
 
-Route::get('dologin', array(
+Route::post('dologin', array(
   'as' => 'dologin',
   'uses' => 'PageController@doLogin',
 ));
