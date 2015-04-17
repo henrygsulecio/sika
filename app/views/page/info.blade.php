@@ -56,7 +56,9 @@
         <td>{{ $user->nhr}}</td>
         
         
-        <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a></td>
+        <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a>
+            <a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
+        </td>
       </tr>
       @endforeach
     </table>
@@ -67,6 +69,14 @@
     {{ $users->links() }}
   </div>
 </div>
-
+<div class="row">
+  <div class="col-xs-12">
+    <div class="col-xs-12">
+    <button type="button" class="btn btn-default btn-lg">
+         <a href="{{ URL::to('exportinfo') }}"><span class"glyphicon glyphicon-star">Descargar .csv</span></a>
+    </button>
+  </div>
+</div>
+</div>
 
 @stop

@@ -100,7 +100,11 @@ Route::get('info', array(
   'as' => 'info',
   'uses' => 'PageController@showInfo',
 ));
-
+Route::get('exportinfo', array(
+  'before' => 'auth.fake',
+ 
+  'uses' => 'PageController@exelInfo',
+));
 
 
 Route::post('user', array(

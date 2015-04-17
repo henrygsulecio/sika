@@ -743,4 +743,49 @@ $messages = DB::table('message')
     }
 
 
+public function exelInfo(){
+ // $data = DB::table('user_info')->get();
+   set_time_limit(0);
+ 
+
+
+    $data = DB::table('rutas')
+      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.nfactura,rutas.norden,rutas.nhr')
+      //->where('message.msg_out', '0')
+      //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
+      ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
+      ->groupBy(DB::raw('rutas.ruta_id'))
+      ->get();
+     
+
+  Excel::create('ruta_info', function($excel) use($data) {
+
+    $excel->sheet('Sheetname', function($sheet) use($data) {
+              
+        $sheet->cells('A2:M2', function($cells) {
+                          $cells->setFont(array(
+                                  'family'     => 'Calibri',
+                                  'size'       => '16',
+                                  'bold'       =>  true
+                              ));
+           });
+
+              //TITULOS
+              $sheet->fromArray(array( 
+                    array('Fecha creacion','actualizacion','id ruta','nombre cliente','direccion cliente','numero de cuenta','pedido','factura','numero orden','numero hr')
+              
+              ));
+            //CONTENIDO
+            foreach ($data as $user) 
+            {
+              
+              $sheet->fromArray(array(
+                      array($user->created_at,$user->updated_at,$user->ruta_id,$user->nombre,$user->direccion,$user->ncuenta,$user->pedido,$user->nfactura,$user->norden,$user->nhr)
+              ));
+            }
+      });
+
+   })->download('csv');//->download($tipo);->store('csv', storage_path('excel/exports'))
+} 
+
 }
