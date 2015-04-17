@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'mobil_camion',
+			'database'  => 'sika',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

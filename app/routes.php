@@ -66,6 +66,22 @@ Route::post('repartidor', array(
   'uses' => 'PageController@updateRepartidor',
 ));
 
+Route::get('ruta', array(
+  'before' => 'auth.fake',
+  'uses' => 'PageController@showRuta',
+));
+
+Route::post('ruta', array(
+  'before' => 'auth.fake',
+  'as' => 'ruta',
+  'uses' => 'PageController@updateRuta',
+));
+
+Route::get('ruta/{id}', array(
+  'before' => 'auth.fake',
+  'uses' => 'PageController@showRutas',
+))
+->where('id', '[0-9]+');
 
 
 Route::get('search/{phone}', array(

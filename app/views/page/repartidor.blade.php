@@ -42,25 +42,25 @@ function goBack() {
       
       <div class="form-group">
 
-        <label for="firstname" class="col-sm-2 control-label">Nombre</label>
+        <label for="nombre" class="col-sm-2 control-label">Nombre</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Nombre" value="">
+          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="">
         </div>
       </div>
       
       <div class="form-group">
 
-        <label for="firstname" class="col-sm-2 control-label">Apellido</label>
+        <label for="apellido" class="col-sm-2 control-label">Apellido</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Nombre" value="">
+          <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" value="">
         </div>
       </div>
       
       
        <div class="form-group">
-        <label for="license" class="col-sm-2 control-label">Número de carné</label>
+        <label for="ncarne" class="col-sm-2 control-label">Número de carné</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="ncuenta" id="ncuenta" placeholder="ncuenta" value="">
+          <input type="text" class="form-control" name="ncarne" id="ncarne" placeholder="ncarne" value="">
         </div>
       </div>
 

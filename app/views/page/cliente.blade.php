@@ -42,9 +42,9 @@ function goBack() {
       
       <div class="form-group">
 
-        <label for="firstname" class="col-sm-2 control-label">Nombre</label>
+        <label for="nombre" class="col-sm-2 control-label">Nombre</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Nombre" value="">
+          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="">
         </div>
       </div>
       

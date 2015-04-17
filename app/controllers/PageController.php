@@ -43,27 +43,12 @@ class PageController extends BaseController {
   {
     // info
     
-    $users = DB::table('user')
-      ->selectRaw('DISTINCT (user.phone) as telefono,user.created_at, user.telco, user_info.firstname, user_info.lastname, user_info.comments, count(message.msg_out) AS messages,message.user_id, user_info.location, user_info.vehicle,user_info.tons, 
-      (SELECT COUNT(*) 
-        FROM user_code uc
-        LEFT JOIN code c ON uc.code_id=c.id
-        LEFT JOIN code_type ct ON c.code_type_id=ct.id
-        WHERE uc.user_id=user.id AND ct.name=\'cubeta\') AS cubetas,
-      (SELECT COUNT(*) 
-        FROM user_code uc
-        LEFT JOIN code c ON uc.code_id=c.id
-        LEFT JOIN code_type ct ON c.code_type_id=ct.id
-      WHERE uc.user_id=user.id AND ct.name=\'galon\') AS galones')
-      ->leftJoin('user_info', 'user.id', '=', 'user_info.user_id')
-      ->leftJoin('point', 'user.id', '=', 'point.user_id')
-      ->leftJoin('message', 'user.id', '=', 'message.user_id')
-      ->leftJoin('user_code', 'user.id','=', 'user_code.user_id')
-      ->leftJoin('code', 'user_code.code_id','=', 'code.id')
-      ->leftJoin('code_type','code.code_type_id','=', 'code_type.id')
-      ->where('message.msg_out', '0')
+    $users = DB::table('rutas')
+      ->selectRaw('rutas.created_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido')
+      //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
-      ->groupBy(DB::raw('user.id, message.msg_out'))
+      ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
+      ->groupBy(DB::raw('rutas.ruta_id'))
       ->paginate(20);
      //Log::info("info datos: " . print_r($users, true));
     // display page 
@@ -113,6 +98,56 @@ public function showCliente()
       //'user' => $user,
     ));
   }
+
+  public function showRuta()
+  {
+    // get user data
+    //$user = $this->getUserData($id);
+$clientes = DB::table('clientes')
+      ->selectRaw('*')
+      //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
+      //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
+      //->where('reguards.id', $id)
+      ->get();
+
+      $repartidores = DB::table('repartidores')
+      ->selectRaw('*')
+      //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
+      //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
+      //->where('reguards.id', $id)
+      ->get();
+    // display page 
+    return View::make('page.ruta', array(
+      'page' => 'ruta',
+      'clientes' => $clientes,
+      'repartidores'=>$repartidores,
+    ));
+  }
+
+
+  public function showRutas($id)
+  {
+    $clientes = DB::table('clientes')
+      ->selectRaw('*')
+      
+      ->get();
+
+      $repartidores = DB::table('repartidores')
+      ->selectRaw('*')
+     
+      ->get();
+    // get user data
+    $user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.ruta', array(
+      'page' => 'ruta',
+      'user' => $user,
+      'clientes' => $clientes,
+      'repartidores' => $repartidores,
+    ));
+  }
+
     public function showReguardStatus($id)
   {
     // get Reguards data
@@ -132,10 +167,10 @@ public function showCliente()
 
   protected function getUserData($id)
   {
-    $user = DB::table('user')
-      ->selectRaw('user.*, user_info.*')
-      ->leftJoin('user_info', 'user.id', '=', 'user_info.user_id')
-      ->where('user.id', $id)
+    $user = DB::table('rutas')
+      ->selectRaw('rutas.*')
+      //->leftJoin('user_info', 'user.id', '=', 'user_info.user_id')
+      ->where('rutas.ruta_id', $id)
       ->first();
 
     return $user;
@@ -356,6 +391,184 @@ public function showCliente()
      
    
   }
+
+
+  public function updateCliente()
+  {
+
+    // parameters
+    $now = date('Y-m-d H:i:s');
+    //$id = Input::get('user_id', 0);
+    $nombre = trim(Input::get('nombre', ''));
+    $direccion = trim(Input::get('direccion', ''));
+    $ncuenta = trim(Input::get('ncuenta', ''));
+     //Log::info('first name: ' .  $nombre);
+     //Log::info('birthday: ' .  $direccion);
+     //Log::info('cienta: ' . $ncuenta);
+
+ // update
+    DB::beginTransaction();
+    try {
+      
+        Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // insert
+        DB::table('clientes')->insert(
+          array(
+            //'user_id' => $id,
+            'nombre' => $nombre,
+            'direccion' => $direccion,
+            'ncuenta' => $ncuenta,
+            
+            
+          )
+        );
+      
+
+    
+
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+    }
+  //else de validacion
+
+    
+
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.cliente', array(
+      'page' => 'cliente',
+      //'user' => $user,
+    ));
+     
+   
+  }
+
+  public function updateRepartidor()
+  {
+
+    // parameters
+    $now = date('Y-m-d H:i:s');
+    //$id = Input::get('user_id', 0);
+    $nombre = trim(Input::get('nombre', ''));
+    $apellido = trim(Input::get('apellido', ''));
+    $ncarne = trim(Input::get('ncarne', ''));
+     //Log::info('first name: ' .  $nombre);
+     //Log::info('birthday: ' .  $direccion);
+     //Log::info('cienta: ' . $ncuenta);
+
+ // update
+    DB::beginTransaction();
+    try {
+      
+        Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // insert
+        DB::table('repartidores')->insert(
+          array(
+            //'user_id' => $id,
+            'nombre' => $nombre,
+            'apellido' => $apellido,
+            'ncarne' => $ncarne,
+            
+            
+          )
+        );
+      
+
+    
+
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+    }
+  //else de validacion
+
+    
+
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.repartidor', array(
+      'page' => 'repartidor',
+      //'user' => $user,
+    ));
+     
+   
+  }
+
+
+  public function updateRuta()
+  {
+
+    $clientes = DB::table('clientes')
+      ->selectRaw('*')
+      
+      ->get();
+
+      $repartidores = DB::table('repartidores')
+      ->selectRaw('*')
+      
+      ->get();
+
+    // parameters
+    $now = date('Y-m-d H:i:s');
+    //$id = Input::get('user_id', 0);
+    $cliente_id = trim(Input::get('cliente_id', ''));
+    $repartidor_id = trim(Input::get('repartidor_id', ''));
+    $pedido = trim(Input::get('pedido', ''));
+     //Log::info('first name: ' .  $nombre);
+     //Log::info('birthday: ' .  $direccion);
+     //Log::info('cienta: ' . $ncuenta);
+
+ // update
+    DB::beginTransaction();
+    try {
+      
+        Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // insert
+        DB::table('rutas')->insert(
+          array(
+            //'user_id' => $id,
+            'cliente_id' => $cliente_id,
+            'repartidor_id' => $repartidor_id,
+            'pedido' => $pedido,
+            
+            
+          )
+        );
+      
+
+    
+
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+    }
+  //else de validacion
+
+    
+
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.ruta', array(
+      'page' => 'ruta',
+      'clientes' => $clientes,
+      'repartidores' => $repartidores,
+     
+    ));
+     
+   
+  }
+
+
 
   public function SearchData($phone){
 

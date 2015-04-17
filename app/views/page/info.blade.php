@@ -2,24 +2,12 @@
 
 @section('content')
 
-<div class="row search">
-      <div class="col-sm-3">
-         <input type="text" id="buscar" class="form-control insearch"  placeholder="Buscar numero o codigo" style="
-    height: 33px;">
-      </div>
-     <button type="submit" class="btn btn-primary" onclick="trackChange(document.getElementById('buscar').value)">Buscar</button>
-     <script>
-         function trackChange(value)
-         {
-            window.open("search/"+value)
-         }
-     </script>
-</div>
+
 <div class="row">
   <div class="col-xs-12">
     <div class="col-xs-12">
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('cliente/') }}"><span class"glyphicon glyphicon-star">Agregar Cliente</span></a>
+         <a href="{{ URL::to('ruta/') }}"><span class"glyphicon glyphicon-star">Agregar Ruta</span></a>
     </button>
   </div>
 </div>
@@ -49,18 +37,18 @@
       @foreach ($users as $user)
       <tr>
        <td>{{ $user->created_at}}</td>
-       <td>{{ $user->lastname}}</td>
-       <td>{{ $user->firstname}}</td>
+       <td>{{ $user->ruta_id}}</td>
+       <td>{{ $user->nombre}}</td>
        
-       <td><a href="{{ URL::to('record/' . $user->telefono) }}">{{ $user->telefono}}</a></td>
+       <td>{{ $user->direccion}}</td>
        
       
        
-        <td>{{ $user->galones}}</td>
-        <td>{{ $user->cubetas}}</td>
-        <td>{{ ($user->galones*20) + ($user->cubetas*50)}}</td>
+        <td>{{ $user->ncuenta}}</td>
+        <td>{{ $user->pedido}}</td>
         
-        <td><a href="{{ URL::to('user/' . $user->user_id) }}"><span class="label label-info">Actualizar</span></a></td>
+        
+        <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a></td>
       </tr>
       @endforeach
     </table>
@@ -71,14 +59,6 @@
     {{ $users->links() }}
   </div>
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="col-xs-12">
-    <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('exportinfo') }}"><span class"glyphicon glyphicon-star">Descargar .csv</span></a>
-    </button>
-  </div>
-</div>
-</div>
+
 
 @stop
