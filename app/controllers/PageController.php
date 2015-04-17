@@ -71,7 +71,7 @@ class PageController extends BaseController {
     // info
     
     $users = DB::table('rutas')
-      ->selectRaw('rutas.created_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido')
+      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.nfactura,rutas.norden,rutas.nhr')
       //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
       ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
@@ -566,6 +566,9 @@ public function showCliente()
     $cliente_id = trim(Input::get('cliente_id', ''));
     $repartidor_id = trim(Input::get('repartidor_id', ''));
     $pedido = trim(Input::get('pedido', ''));
+     $nfactura = trim(Input::get('nfactura', ''));
+      $norden = trim(Input::get('norden', ''));
+       $nhr = trim(Input::get('nhr', ''));
      
      Log::info('id: ' . $id);
      Log::info('cliente_id: ' .  $cliente_id);
@@ -589,7 +592,10 @@ public function showCliente()
             'cliente_id' => $cliente_id,
             'repartidor_id' => $repartidor_id,
             'pedido' => $pedido,
-            'created_at' => $now,
+            'nfactura' => $nfactura,
+            'norden' => $norden,
+            'nhr' => $nhr,
+            'updated_at' => $now,
           ));
       }else{
         
@@ -600,6 +606,9 @@ public function showCliente()
             'cliente_id' => $cliente_id,
             'repartidor_id' => $repartidor_id,
             'pedido' => $pedido,
+            'nfactura' => $nfactura,
+            'norden' => $norden,
+            'nhr' => $nhr,
             'created_at' => $now,
             
             

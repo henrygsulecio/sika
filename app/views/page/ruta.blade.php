@@ -79,6 +79,27 @@ function goBack() {
           <input type="text" class="form-control" name="pedido" id="pedido" placeholder="Pedido" value="">
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="nfactura" class="col-sm-2 control-label">Número Factura</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="nfactura" id="nfactura" placeholder="factura" value="">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="norden" class="col-sm-2 control-label">Número Orden</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="norden" id="norden" placeholder="Pedido" value="">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="nhr" class="col-sm-2 control-label">Número HR</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="nhr" id="nhr" placeholder="HR" value="">
+        </div>
+      </div>
       
        
 

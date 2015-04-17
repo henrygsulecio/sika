@@ -76,11 +76,30 @@ function goBack() {
       <div class="form-group">
         <label for="pedido" class="col-sm-2 control-label">Pedido</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="pedido" id="pedido" placeholder="Pedido" value="">
+          <input type="text" class="form-control" name="pedido" id="pedido" placeholder="Pedido" value="{{ $user->pedido }}">
         </div>
       </div>
       
-       
+       <div class="form-group">
+        <label for="nfactura" class="col-sm-2 control-label">Número Factura</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="nfactura" id="nfactura" placeholder="factura" value="{{ $user->nfactura }}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="norden" class="col-sm-2 control-label">Número Orden</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="norden" id="norden" placeholder="Orden" value="{{ $user->norden }}">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="nhr" class="col-sm-2 control-label">Número HR</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="nhr" id="nhr" placeholder="HR" value="{{ $user->nhr }}">
+        </div>
+      </div>
 
      
 
