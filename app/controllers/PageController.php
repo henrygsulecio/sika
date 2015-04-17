@@ -130,7 +130,7 @@ public function showCliente()
   {
     // get user data
     //$user = $this->getUserData($id);
-$clientes = DB::table('clientes')
+      $clientes = DB::table('clientes')
       ->selectRaw('*')
       //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
       //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
@@ -163,15 +163,33 @@ $clientes = DB::table('clientes')
       ->selectRaw('*')
      
       ->get();
+
+      $clientess = DB::table('clientes')
+      ->selectRaw('*')
+      
+      ->first();
+
+      $repartidoress = DB::table('repartidores')
+      ->selectRaw('*')
+     
+      ->first();
     // get user data
-    $user = $this->getUserData($id);
+      $user = DB::table('rutas')
+      ->selectRaw('*')
+      //->leftJoin('user_info', 'user.id', '=', 'user_info.user_id')
+      ->where('rutas.ruta_id', $id)
+      ->first();
+
+    //$user = $this->getUserData($id);
 
     // display page 
-    return View::make('page.ruta', array(
-      'page' => 'ruta',
+    return View::make('page.rutas', array(
+      'page' => 'rutas',
       'user' => $user,
       'clientes' => $clientes,
       'repartidores' => $repartidores,
+      'clientess' => $clientess,
+      'repartidoress' => $repartidoress,
     ));
   }
 
@@ -544,19 +562,37 @@ $clientes = DB::table('clientes')
 
     // parameters
     $now = date('Y-m-d H:i:s');
-    //$id = Input::get('user_id', 0);
+    $id = Input::get('ruta_id', 0);
     $cliente_id = trim(Input::get('cliente_id', ''));
     $repartidor_id = trim(Input::get('repartidor_id', ''));
     $pedido = trim(Input::get('pedido', ''));
-     //Log::info('first name: ' .  $nombre);
-     //Log::info('birthday: ' .  $direccion);
-     //Log::info('cienta: ' . $ncuenta);
-
+     
+     Log::info('id: ' . $id);
+     Log::info('cliente_id: ' .  $cliente_id);
+     Log::info('repartidor_id: ' . $repartidor_id);
+     Log::info('pedido: ' . $pedido);
+// get user data
+    $user = DB::table('rutas')
+      ->selectRaw('*')
+      ->where('ruta_id', $id)
+      ->first();
  // update
     DB::beginTransaction();
     try {
-      
+      Session::flash('result', 'Los datos han sido actualizados con EXITO');
+      if ($user) {
         Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // update
+        DB::table('rutas')
+          ->where('ruta_id', $id)
+          ->update(array(
+            'cliente_id' => $cliente_id,
+            'repartidor_id' => $repartidor_id,
+            'pedido' => $pedido,
+            'created_at' => $now,
+          ));
+      }else{
+        
         // insert
         DB::table('rutas')->insert(
           array(
@@ -564,11 +600,12 @@ $clientes = DB::table('clientes')
             'cliente_id' => $cliente_id,
             'repartidor_id' => $repartidor_id,
             'pedido' => $pedido,
+            'created_at' => $now,
             
             
           )
         );
-      
+      }
 
     
 

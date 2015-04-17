@@ -69,7 +69,7 @@ function goBack() {
 
 
 
-      <button type="submit" class="btn btn-primary">Actualizar</button>
+      <button type="submit" class="btn btn-primary">Agregar</button>
     </form>
   </div>
 </div>

@@ -37,13 +37,13 @@ function goBack() {
         </script>
 
     <form action="{{ URL::route('ruta') }}" class="form-horizontal" method="post" role="form">
-      
+      <input type="hidden" name="ruta_id" id="ruta_id" value="{{ $user->ruta_id }}">
 
       
       <div class="form-group">
         <label for="marcacion" class="col-sm-2 control-label">Cliente</label>
         <div class="col-sm-8">
-          
+          <label for="cliente_id" class="col-sm-4 control-label">Actual: {{ $clientess->nombre }}</label>
           <select name="cliente_id" id="cliente_id"  class="form-control">
               @foreach ($clientes as $cliente)
       
@@ -60,7 +60,7 @@ function goBack() {
       <div class="form-group">
         <label for="marcacion" class="col-sm-2 control-label">Repartidor</label>
         <div class="col-sm-8">
-          
+          <label for="repartidor_id" class="col-sm-4 control-label">Actual:{{ $repartidoress->nombre }} </label>
           <select name="repartidor_id" id="repartidor_id"  class="form-control">
               @foreach ($repartidores as $repartidor)
       
