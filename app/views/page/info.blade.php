@@ -55,7 +55,7 @@
         <td>{{ $user->nfactura}}</td>
         <td>{{ $user->norden}}</td>
         <td>{{ $user->nhr}}</td>
-        <td>{{ $user->rname}}{{ $user->apellido}</td>
+        <td>{{ $user->rname}}{{ $user->apellido}}</td>
         
         
         <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a>
