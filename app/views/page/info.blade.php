@@ -23,7 +23,7 @@
       <tr>
         <th>Fecha creación</th>
         <th>Fecha actualización</th>
-        <th>Codigo</th>
+        <th>Ruta N.</th>
         <th>Nombre</th>
         <th>Direcci&oacute;n</th>
         

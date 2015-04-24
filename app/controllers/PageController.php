@@ -845,7 +845,7 @@ public function exelInfo(){
 
               //TITULOS
               $sheet->fromArray(array( 
-                    array('Fecha creacion','actualizacion','id ruta','nombre cliente','direccion cliente','numero de cuenta','pedido','factura','numero orden','numero hr', 'repartidor')
+                    array('Fecha creacion','actualizacion','ruta N.','nombre cliente','direccion cliente','numero de cuenta','pedido','factura','numero orden','numero hr', 'repartidor')
               
               ));
             //CONTENIDO
