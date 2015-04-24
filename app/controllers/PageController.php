@@ -71,10 +71,11 @@ class PageController extends BaseController {
     // info
     
     $users = DB::table('rutas')
-      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.nfactura,rutas.norden,rutas.nhr')
+      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
       //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
       ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
+      ->leftJoin('repartidores', 'rutas.repartidor_id', '=', 'repartidores.id')
       ->groupBy(DB::raw('rutas.ruta_id'))
       ->paginate(20);
      //Log::info("info datos: " . print_r($users, true));
@@ -821,10 +822,11 @@ public function exelInfo(){
 
 
     $data = DB::table('rutas')
-      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.nfactura,rutas.norden,rutas.nhr')
+      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
       //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
       ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
+      ->leftJoin('repartidores', 'rutas.repartidor_id', '=', 'repartidores.id')
       ->groupBy(DB::raw('rutas.ruta_id'))
       ->get();
      
@@ -843,7 +845,7 @@ public function exelInfo(){
 
               //TITULOS
               $sheet->fromArray(array( 
-                    array('Fecha creacion','actualizacion','id ruta','nombre cliente','direccion cliente','numero de cuenta','pedido','factura','numero orden','numero hr')
+                    array('Fecha creacion','actualizacion','id ruta','nombre cliente','direccion cliente','numero de cuenta','pedido','factura','numero orden','numero hr', 'repartidor')
               
               ));
             //CONTENIDO
@@ -851,7 +853,7 @@ public function exelInfo(){
             {
               
               $sheet->fromArray(array(
-                      array($user->created_at,$user->updated_at,$user->ruta_id,$user->nombre,$user->direccion,$user->ncuenta,$user->pedido,$user->nfactura,$user->norden,$user->nhr)
+                      array($user->created_at,$user->updated_at,$user->ruta_id,$user->nombre,$user->direccion,$user->ncuenta,$user->pedido,$user->nfactura,$user->norden,$user->nhr, $user->rname, $user->apellido)
               ));
             }
       });
