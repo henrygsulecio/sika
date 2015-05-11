@@ -71,7 +71,7 @@ class PageController extends BaseController {
     // info
     
     $users = DB::table('rutas')
-      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
+      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
       //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
       ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
@@ -81,6 +81,25 @@ class PageController extends BaseController {
      //Log::info("info datos: " . print_r($users, true));
     // display page 
     return View::make('page.info', array(
+      'page' => 'users',
+      'users' => $users,
+    ));
+  }
+
+  public function showInfoRepartidor()
+  {
+    // info
+    
+    $users = DB::table('repartidores')
+      ->selectRaw('repartidores.id, repartidores.created_at, repartidores.nombre, repartidores.apellido, repartidores.ncarne')
+      //->where('message.msg_out', '0')
+      //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
+      
+      //->groupBy(DB::raw('rutas.ruta_id'))
+      ->paginate(20);
+     //Log::info("info datos: " . print_r($users, true));
+    // display page 
+    return View::make('page.infoRepartidor', array(
       'page' => 'users',
       'users' => $users,
     ));
@@ -567,6 +586,7 @@ public function showCliente()
     $cliente_id = trim(Input::get('cliente_id', ''));
     $repartidor_id = trim(Input::get('repartidor_id', ''));
     $pedido = trim(Input::get('pedido', ''));
+    $direccion = trim(Input::get('direccion', ''));
      $nfactura = trim(Input::get('nfactura', ''));
       $norden = trim(Input::get('norden', ''));
        $nhr = trim(Input::get('nhr', ''));
@@ -597,6 +617,7 @@ public function showCliente()
             'norden' => $norden,
             'nhr' => $nhr,
             'updated_at' => $now,
+            'direccion' => $direccion,
           ));
       }else{
         
@@ -611,6 +632,7 @@ public function showCliente()
             'norden' => $norden,
             'nhr' => $nhr,
             'created_at' => $now,
+            'direccion' => $direccion,
             
             
           )

@@ -7,7 +7,7 @@
   <div class="col-xs-12">
     <div class="col-xs-12">
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('ruta/') }}"><span class"glyphicon glyphicon-star">Agregar Ruta</span></a>
+         <a href="{{ URL::to('repartidor/') }}"><span class"glyphicon glyphicon-star">Agregar Repartidor</span></a>
     </button>
   </div>
 </div>
@@ -22,19 +22,11 @@
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
       <tr>
         <th>Fecha creación</th>
-        <th>Fecha actualización</th>
-        <th>Ruta N.</th>
+        
         <th>Nombre</th>
-        <th>Direcci&oacute;n</th>
+        <th>Apellido</th>
+        <th>N. Ruta</th>
         
-        
-        <th>Cuenta</th>
-        <th>Pedido</th>
-        <th>Dirección de Entrega</th>
-        <th>Número Factura</th>
-        <th>Número Orden</th>
-        <th>Número sHR</th>
-        <th>Piloto</th>
         
         <th>Acciones</th>
         
@@ -43,25 +35,14 @@
       @foreach ($users as $user)
       <tr>
        <td>{{ $user->created_at}}</td>
-       <td>{{ $user->updated_at}}</td>
-       <td>{{ $user->ruta_id}}</td>
-       <td>{{ $user->nombre}}</td>
-       
-       <td>{{ $user->direccion}}</td>
-       
       
-       
-        <td>{{ $user->ncuenta}}</td>
-        <td>{{ $user->pedido}}</td>
-        <td>{{ $user->direc}}</td>
-        <td>{{ $user->nfactura}}</td>
-        <td>{{ $user->norden}}</td>
-        <td>{{ $user->nhr}}</td>
-        <td>{{ $user->rname}} {{ $user->apellido}}</td>
+        <td>{{ $user->nombre}}</td>
+        <td>{{ $user->apellido}}</td>
+        <td>{{ $user->ncarne}}</td>
         
         
-        <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a>
-            <a href="{{ URL::to('rutad/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
+        <td><a href="{{ URL::to('ruta/' . $user->id) }}"><span class="label label-info">Actualizar</span></a>
+            <a href="{{ URL::to('rutad/' . $user->id) }}"><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
       @endforeach

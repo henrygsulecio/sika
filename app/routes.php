@@ -16,6 +16,12 @@ Route::get('/', array(
   'uses' => 'PageController@showInfo',
 ));
 
+Route::get('repartidores', array(
+  'before' => 'auth.fake',
+  'as' => 'repartidores',
+  'uses' => 'PageController@showInfoRepartidor',
+));
+
 Route::get('login', array(
   'before' => 'guest.fake',
   'as' => 'login',
