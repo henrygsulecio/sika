@@ -61,6 +61,8 @@ Route::post('cliente', array(
   'uses' => 'PageController@updateCliente',
 ));
 
+
+//REPARTIDORES
 Route::get('repartidor', array(
   'before' => 'auth.fake',
   'uses' => 'PageController@showRepartidor',
@@ -71,6 +73,19 @@ Route::post('repartidor', array(
   'as' => 'repartidor',
   'uses' => 'PageController@updateRepartidor',
 ));
+
+Route::any('repartidord/{id}', array(
+  'before' => 'auth.fake',
+  'as' => 'repartidord',
+  'uses' => 'PageController@deleteRepartidor',
+));
+
+Route::get('repartidor/{id}', array(
+  'before' => 'auth.fake',
+  'uses' => 'PageController@showrepartidors',
+))
+->where('id', '[0-9]+');
+//FIN REPARTIDORES
 
 Route::get('ruta', array(
   'before' => 'auth.fake',

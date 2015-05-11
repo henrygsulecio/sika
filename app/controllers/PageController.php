@@ -664,6 +664,55 @@ public function showCliente()
    
   }
 
+  public function deleteRepartidor($id)
+  {
+
+    
+
+    
+   
+// get user data
+    $user = DB::table('repartidores')
+      ->selectRaw('*')
+      ->where('id', $id)
+      ->first();
+ // update
+    DB::beginTransaction();
+    try {
+     // Session::flash('result', 'Los datos han sido eliminados con EXITO');
+      if ($user) {
+        Session::flash('result', 'Los datos han sido eliminados con EXITO');
+        // update
+        DB::table('repartidores')
+          ->where('id', $id)
+          ->delete();
+          
+      }
+
+    
+
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+    }
+  //else de validacion
+
+    
+
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.repartidor', array(
+      'page' => 'repartidor',
+      
+     
+    ));
+     
+   
+  }
+
 
   public function deleteRuta($id)
   {
