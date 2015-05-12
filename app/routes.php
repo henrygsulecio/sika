@@ -16,11 +16,6 @@ Route::get('/', array(
   'uses' => 'PageController@showInfo',
 ));
 
-Route::get('repartidores', array(
-  'before' => 'auth.fake',
-  'as' => 'repartidores',
-  'uses' => 'PageController@showInfoRepartidor',
-));
 
 Route::get('login', array(
   'before' => 'guest.fake',
@@ -55,14 +50,29 @@ Route::get('cliente', array(
   'uses' => 'PageController@showCliente',
 ));
 
+
+//clientes
+Route::get('clientes', array(
+  'before' => 'auth.fake',
+  'as' => 'clientes',
+  'uses' => 'PageController@showInfoCliente',
+));
+
 Route::post('cliente', array(
   'before' => 'auth.fake',
   'as' => 'cliente',
   'uses' => 'PageController@updateCliente',
 ));
-
+//fin clientes
 
 //REPARTIDORES
+
+Route::get('repartidores', array(
+  'before' => 'auth.fake',
+  'as' => 'repartidores',
+  'uses' => 'PageController@showInfoRepartidor',
+));
+
 Route::get('repartidor', array(
   'before' => 'auth.fake',
   'uses' => 'PageController@showRepartidor',

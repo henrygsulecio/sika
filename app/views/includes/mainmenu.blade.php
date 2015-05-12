@@ -16,7 +16,7 @@
         @else
 
           <li><a href="{{ URL::route('info') }}">Info</a></li>
-         <li><a href="{{ URL::route('cliente') }}">Add Cliente</a></li>
+         <li><a href="{{ URL::route('clientes') }}">Clientes</a></li>
          
          <li><a href="{{ URL::route('repartidores') }}">Repartidores</a></li>
           <li><a href="{{ URL::route('dologout') }}">Logout</a></li>
