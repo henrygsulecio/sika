@@ -732,6 +732,55 @@ public function showCliente()
    
   }
 
+  public function deleteCliente($id)
+  {
+
+    
+
+    
+   
+// get user data
+    $user = DB::table('clientes')
+      ->selectRaw('*')
+      ->where('id', $id)
+      ->first();
+ // update
+    DB::beginTransaction();
+    try {
+     // Session::flash('result', 'Los datos han sido eliminados con EXITO');
+      if ($user) {
+        Session::flash('result', 'Los datos han sido eliminados con EXITO');
+        // update
+        DB::table('clientes')
+          ->where('id', $id)
+          ->delete();
+          
+      }
+
+    
+
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+    }
+  //else de validacion
+
+    
+
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.cliente', array(
+      'page' => 'cliente',
+      
+     
+    ));
+     
+   
+  }
+
 
   public function deleteRuta($id)
   {

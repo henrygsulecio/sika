@@ -63,6 +63,12 @@ Route::post('cliente', array(
   'as' => 'cliente',
   'uses' => 'PageController@updateCliente',
 ));
+
+Route::any('cliented/{id}', array(
+  'before' => 'auth.fake',
+  'as' => 'cliented',
+  'uses' => 'PageController@deleteCliente',
+));
 //fin clientes
 
 //REPARTIDORES
