@@ -81,9 +81,9 @@ function goBack() {
       </div>
 
       <div class="form-group">
-        <label for="direccion" class="col-sm-2 control-label">Dirección</label>
+        <label for="direccion" class="col-sm-2 control-label">Dirección Entrega</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección" value="">
+          <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección Entrega" value="">
         </div>
       </div>
 

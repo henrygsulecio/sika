@@ -60,7 +60,7 @@ function goBack() {
        <div class="form-group">
         <label for="ncarne" class="col-sm-2 control-label">Número Ruta</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="ncarne" id="ncarne" placeholder="ncarne" value="">
+          <input type="text" class="form-control" name="ncarne" id="ncarne" placeholder="Número Ruta" value="">
         </div>
       </div>
 
