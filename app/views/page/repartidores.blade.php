@@ -11,7 +11,7 @@ function goBack() {
 <div class="row">
   <div class="col-xs-12"><h4 class="resum bg-primary">Repartidor</h4></div>
 </div>
-<button type="button" class="btn-primary" data-dismiss="alert" onclick="goBack()">Regresar</button>
+
 <div class="row">
   <div class="col-xs-12">
     @if (Session::has('result'))
@@ -44,7 +44,7 @@ function goBack() {
 
         <label for="nombre" class="col-sm-2 control-label">Nombre</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="">
+          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{ $user->nombre }}">
         </div>
       </div>
       
@@ -52,7 +52,7 @@ function goBack() {
 
         <label for="apellido" class="col-sm-2 control-label">Apellido</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" value="">
+          <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellido" value="{{ $user->apellido }}">
         </div>
       </div>
       
@@ -60,7 +60,7 @@ function goBack() {
        <div class="form-group">
         <label for="ncarne" class="col-sm-2 control-label">Número Ruta</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="ncarne" id="ncarne" placeholder="Número Ruta" value="">
+          <input type="text" class="form-control" name="ncarne" id="ncarne" placeholder="Número Ruta" value="{{ $user->ncarne }}">
         </div>
       </div>
 

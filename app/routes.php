@@ -69,6 +69,12 @@ Route::any('cliented/{id}', array(
   'as' => 'cliented',
   'uses' => 'PageController@deleteCliente',
 ));
+
+Route::get('cliente/{id}', array(
+  'before' => 'auth.fake',
+  'uses' => 'PageController@showClientes',
+))
+->where('id', '[0-9]+');
 //fin clientes
 
 //REPARTIDORES
@@ -98,7 +104,7 @@ Route::any('repartidord/{id}', array(
 
 Route::get('repartidor/{id}', array(
   'before' => 'auth.fake',
-  'uses' => 'PageController@showrepartidors',
+  'uses' => 'PageController@showRepartidores',
 ))
 ->where('id', '[0-9]+');
 //FIN REPARTIDORES

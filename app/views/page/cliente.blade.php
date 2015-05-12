@@ -11,7 +11,7 @@ function goBack() {
 <div class="row">
   <div class="col-xs-12"><h4 class="resum bg-primary">Cliente</h4></div>
 </div>
-<button type="button" class="btn-primary" data-dismiss="alert" onclick="goBack()">Regresar</button>
+
 <div class="row">
   <div class="col-xs-12">
     @if (Session::has('result'))

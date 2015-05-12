@@ -190,6 +190,8 @@ public function showCliente()
     ));
   }
 
+    
+
 
   public function showRutas($id)
   {
@@ -229,6 +231,44 @@ public function showCliente()
       'repartidores' => $repartidores,
       'clientess' => $clientess,
       'repartidoress' => $repartidoress,
+    ));
+  }
+
+  public function showClientes($id)
+  {
+    
+
+      $clientes = DB::table('clientes')
+      ->selectRaw('*')
+      ->where('clientes.id', $id)
+      ->first();
+    
+
+    // display page 
+    return View::make('page.clientes', array(
+      'page' => 'clientes',
+      
+      'user' => $clientes,
+      
+    ));
+  }
+
+   public function showRepartidores($id)
+  {
+    
+
+      $repartidores = DB::table('repartidores')
+      ->selectRaw('*')
+     ->where('repartidores.id', $id)
+      ->first();
+    
+
+    // display page 
+    return View::make('page.repartidores', array(
+     'page' => 'repartidores',
+      
+      'user' => $repartidores,
+      
     ));
   }
 
@@ -482,19 +522,50 @@ public function showCliente()
 
     // parameters
     $now = date('Y-m-d H:i:s');
-    //$id = Input::get('user_id', 0);
+    $id = Input::get('id', 0);
     $nombre = trim(Input::get('nombre', ''));
     $direccion = trim(Input::get('direccion', ''));
     $ncuenta = trim(Input::get('ncuenta', ''));
      //Log::info('first name: ' .  $nombre);
      //Log::info('birthday: ' .  $direccion);
      //Log::info('cienta: ' . $ncuenta);
+     $user = DB::table('clientes')
+      ->selectRaw('*')
+      ->where('id', $id)
+      ->first();
 
  // update
     DB::beginTransaction();
     try {
       
         Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // insert
+        /*DB::table('clientes')->insert(
+          array(
+            //'user_id' => $id,
+            'nombre' => $nombre,
+            'direccion' => $direccion,
+            'ncuenta' => $ncuenta,
+            
+            
+          )
+        );*/
+
+if ($user) {
+        Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // update
+        DB::table('clientes')
+          ->where('id', $id)
+          ->update(array(
+            'id' => $id,
+            'nombre' => $nombre,
+            'direccion' => $direccion,
+            'ncuenta' => $ncuenta,
+            
+            
+          ));
+      }else{
+        
         // insert
         DB::table('clientes')->insert(
           array(
@@ -506,6 +577,7 @@ public function showCliente()
             
           )
         );
+      }
       
 
     
@@ -536,19 +608,50 @@ public function showCliente()
 
     // parameters
     $now = date('Y-m-d H:i:s');
-    //$id = Input::get('user_id', 0);
+    $id = Input::get('id', 0);
     $nombre = trim(Input::get('nombre', ''));
     $apellido = trim(Input::get('apellido', ''));
     $ncarne = trim(Input::get('ncarne', ''));
      //Log::info('first name: ' .  $nombre);
      //Log::info('birthday: ' .  $direccion);
      //Log::info('cienta: ' . $ncuenta);
+    $user = DB::table('repartidores')
+      ->selectRaw('*')
+      ->where('id', $id)
+      ->first();
 
  // update
     DB::beginTransaction();
     try {
       
         Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // insert
+       /* DB::table('repartidores')->insert(
+          array(
+            //'user_id' => $id,
+            'nombre' => $nombre,
+            'apellido' => $apellido,
+            'ncarne' => $ncarne,
+            
+            
+          )
+        );*/
+
+      if ($user) {
+        Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // update
+        DB::table('repartidores')
+          ->where('id', $id)
+          ->update(array(
+            'id' => $id,
+            'nombre' => $nombre,
+            'apellido' => $apellido,
+            'ncarne' => $ncarne,
+            
+            
+          ));
+      }else{
+        
         // insert
         DB::table('repartidores')->insert(
           array(
@@ -560,6 +663,7 @@ public function showCliente()
             
           )
         );
+      }
       
 
     

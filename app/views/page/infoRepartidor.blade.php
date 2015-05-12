@@ -41,7 +41,7 @@
         <td>{{ $user->ncarne}}</td>
         
         
-        <td><a href="{{ URL::to('ruta/' . $user->id) }}"><span class="label label-info">Actualizar</span></a>
+        <td><a href="{{ URL::to('repartidor/' . $user->id) }}"><span class="label label-info">Actualizar</span></a>
             <a href="{{ URL::to('repartidord/' . $user->id) }}"><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
