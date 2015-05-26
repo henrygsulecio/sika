@@ -74,7 +74,7 @@
   @include('includes.footer')
 
   @section('js-bottom')
-    {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js') }}
+    {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js') }}
     <script>window.jQuery || document.write('<script src="{{ asset('js/jquery.min.js') }}"><\/script>')</script>
 
     {{ HTML::script('js/libs.min.js') }}

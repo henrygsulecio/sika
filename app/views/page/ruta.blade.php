@@ -36,10 +36,12 @@ function goBack() {
               }, 3000);
         </script>
 
+       
+
     <form action="{{ URL::route('ruta') }}" class="form-horizontal" method="post" role="form">
       
 
-      
+      <!--clientes-->
       <div class="form-group">
         <label for="marcacion" class="col-sm-2 control-label">Cliente</label>
         <div class="col-sm-8">
@@ -56,6 +58,21 @@ function goBack() {
           </select>
         </div>
       </div>
+      <!--Direcciones-->
+      <div class="form-group">
+        <label for="marcacion" class="col-sm-2 control-label">Direccion</label>
+        <div class="col-sm-8">
+          
+          <select name="subcategory" id="subcategory"  class="form-control">
+              <option value=""></option>
+              
+              
+          </select>
+        </div>
+      </div>
+
+ 
+
 
       <div class="form-group">
         <label for="marcacion" class="col-sm-2 control-label">Repartidor</label>
@@ -119,6 +136,26 @@ function goBack() {
 
       <button type="submit" class="btn btn-primary">Agregar</button>
     </form>
+
+    <script type="text/javascript">
+            $('#cliente_id').on('change',function(e){
+                 console.log(e);
+                 var cat_id = e.target.value;
+
+                 //ajax
+                 $.get('/ajax-subcat?cat_id=' + cat_id, function(data){
+                  //correcto
+                  console.log(data);
+                  $('#subcategory').empty();
+                  $.each(data,function(index, subcatObj){
+                      $('#subcategory').append('<option value="'+subcatObj.id+'">'+subcatObj.direccion+'</option>');
+
+                  });
+
+                 });
+            });
+
+        </script>
   </div>
 </div>
 @stop
