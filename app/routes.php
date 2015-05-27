@@ -194,6 +194,18 @@ Route::get('exportRep/{repartidor}', array(
   'uses' => 'PageController@exelRep',
 ));
 
+Route::get('exportFec/{fu}/{fd}', array(
+  'before' => 'auth.fake',
+ 
+  'uses' => 'PageController@exelFec',
+));
+
+Route::get('rangof', array(
+  'before' => 'auth.fake',
+  
+  'uses' => 'PageController@showRangoFecha',
+));
+
 
 Route::get('receivesms/{phone}/{shornumber}/{telco}/{msg}', array(
   'as' => 'receivesms',

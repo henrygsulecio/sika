@@ -81,7 +81,11 @@
     </button>
 
      <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('rango') }}"><span class"glyphicon glyphicon-star">Descargar por repartidor .csv</span></a>
+         <a href="{{ URL::to('rango') }}"><span class"glyphicon glyphicon-star">Descargar por repartidor.csv</span></a>
+    </button>
+
+    <button type="button" class="btn btn-default btn-lg">
+         <a href="{{ URL::to('rangof') }}"><span class"glyphicon glyphicon-star">Descargar por fecha.csv</span></a>
     </button>
   </div>
 </div>
