@@ -168,13 +168,18 @@ Route::get('report/{mesu}/{mesd}/{mest}/{ano}', array(
   'uses' => 'PageController@showReport',
 ));
 
-Route::get('/ajax-subcat',function(){
+/*Route::any('/ajax-subcat',function(){
   $cat_id = Input::get('cat_id');
   $subcategories = Subcategory::where('id','=',$cat_id)->get();
   return Response::json($subcategories);
 
 
-});
+});*/
+Route::get('ajax-subcat/{cat_id}', array(
+  'before' => 'auth.fake',
+  'as' => 'ajax-subcat',
+  'uses' => 'PageController@showAjax',
+));
 
 
 

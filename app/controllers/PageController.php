@@ -190,6 +190,39 @@ public function showCliente()
     ));
   }
 
+   public function showAjax($cat_id)
+  {
+    // get user data
+    //$user = $this->getUserData($id);
+      $clientes = DB::table('clientes')
+      ->selectRaw('*')
+      //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
+      //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
+      //->where('reguards.id', $id)
+      ->get();
+
+      $subcategories = DB::table('clientes')
+      ->selectRaw('direccion,id')
+      //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
+      //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
+      ->where('clientes.id', $cat_id)
+      ->get();
+
+      $repartidores = DB::table('repartidores')
+      ->selectRaw('*')
+      //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
+      //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
+      //->where('reguards.id', $id)
+      ->get();
+    // display page 
+      return Response::json($subcategories);
+    /*return View::make('page.ruta', array(
+      'page' => 'ruta',
+      'clientes' => $clientes,
+      'repartidores'=>$repartidores,
+    ));*/
+  }
+
     
 
 

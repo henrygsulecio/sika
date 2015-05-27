@@ -1,11 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-<script>
-function goBack() {
-    window.history.back()
-}
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 
 
 <div class="row">
@@ -139,14 +136,15 @@ function goBack() {
 
     <script type="text/javascript">
             $('#cliente_id').on('change',function(e){
-                 console.log(e);
+                 //console.log(e);
                  var cat_id = e.target.value;
 
                  //ajax
-                 $.get('/ajax-subcat?cat_id=' + cat_id, function(data){
+                 //$.post('/ajax-subcat?cat_id='+$(this).val(), function(response){
+                 $.get('/ajax-subcat/' + cat_id, function(data){
                   //correcto
                   console.log(data);
-                  $('#subcategory').empty();
+                  //$('#subcategory').empty();
                   $.each(data,function(index, subcatObj){
                       $('#subcategory').append('<option value="'+subcatObj.id+'">'+subcatObj.direccion+'</option>');
 
