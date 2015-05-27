@@ -2,87 +2,33 @@
 
 @section('content')
 <div class="searchmounth">
-  <div class="form-group">
-  <label for="pmes" class="col-sm-7 control-label"><h2>Elige los meses</h2></label>
- 
-      <label for="pmes" class="col-sm-7 control-label">Primer mes</label>
-      <div class="col-sm-7">
-          <select name="pmes" id="pmes"  class="form-control">
-                            
-                                   <option value="01">Enero</option>
-                                   <option value="02">Febrero</option>
-                                   <option value="03">Marzo</option>
-                                   <option value="04">Abril</option>
-                                   <option value="05">Mayo</option>
-                                   <option value="06">Junio</option>
-                                   <option value="07">Julio</option>
-                                   <option value="08">Agosto</option>
-                                   <option value="09">Septiembre</option>
-                                   <option value="10">Octubre</option>
-                                   <option value="11">Nomviembre</option>
-                                   <option value="12">Diciembre</option>
-           </select>
-        </div>
-    
-  </div>  
-    <div class="form-group">
-        <label for="smes" class="col-sm-7 control-label">Segundo mes</label>
-        <div class="col-sm-7">
-          <select name="smes" id="smes"  class="form-control">
-                            
-                                   <option value="01">Enero</option>
-                                   <option value="02">Febrero</option>
-                                   <option value="03">Marzo</option>
-                                   <option value="04">Abril</option>
-                                   <option value="05">Mayo</option>
-                                   <option value="06">Junio</option>
-                                   <option value="07">Julio</option>
-                                   <option value="08">Agosto</option>
-                                   <option value="09">Septiembre</option>
-                                   <option value="10">Octubre</option>
-                                   <option value="11">Nomviembre</option>
-                                   <option value="12">Diciembre</option>
-          </select>
-        </div>
-      </div>
-
+   <!--Repartidor-->
       <div class="form-group">
-        <label for="tmes" class="col-sm-7 control-label">Tercer mes</label>
-        <div class="col-sm-7">
-           <select name="tmes" id="tmes"  class="torm-control">
-                            
-                                   <option value="01">Enero</option>
-                                   <option value="02">Febrero</option>
-                                   <option value="03">Marzo</option>
-                                   <option value="04">Abril</option>
-                                   <option value="05">Mayo</option>
-                                   <option value="06">Junio</option>
-                                   <option value="07">Julio</option>
-                                   <option value="08">Agosto</option>
-                                   <option value="09">Septiembre</option>
-                                   <option value="10">Octubre</option>
-                                   <option value="11">Nomviembre</option>
-                                   <option value="12">Diciembre</option>
+        <label for="marcacion" class="col-sm-2 control-label">Repartidor</label>
+        <div class="col-sm-8">
+          
+          <select name="repartidor_id" id="repartidor_id"  class="form-control">
+              @foreach ($repartidores as $repartidor)
+      
+        
+        <option value="{{ $repartidor->id }}">{{ $repartidor->nombre }} {{ $repartidor->apellido }}</option>
+      
+      @endforeach
+              
+              
           </select>
         </div>
       </div>
+ 
 
-       <div class="form-group">
-        <label for="ano" class="col-sm-7 control-label">Año</label>
-        <div class="col-sm-7">
-           <select name="ano" id="ano"  class="torm-control">
-                            
-                                   <option value="2014">2014</option>
-                                   <option value="2015">2015</option>
-                                   
-          </select>
-        </div>
-      </div>
-  <button type="submit" class="btn btn-primary" onclick="trackChangev(document.getElementById('pmes').value,document.getElementById('smes').value,document.getElementById('tmes').value,document.getElementById('ano').value)">Buscar</button>
+      
+
+       
+  <button type="submit" class="btn btn-primary" onclick="trackChangev(document.getElementById('repartidor_id').value)">Descargar</button>
      <script>
-         function trackChangev(valueu, valued, valuet,ano)
+         function trackChangev(valueu)
          {
-            window.open("/report/"+valueu+"/"+valued+"/"+valuet+"/"+ano)
+            window.open("/exportRep/"+valueu)
          }
      </script>
 </div>

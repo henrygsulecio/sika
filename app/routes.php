@@ -162,7 +162,7 @@ Route::post('user', array(
   'uses' => 'PageController@updateUser',
 ));
 
-Route::get('report/{mesu}/{mesd}/{mest}/{ano}', array(
+Route::get('report/{mesu}', array(
   'before' => 'auth.fake',
   'as' => 'report',
   'uses' => 'PageController@showReport',
@@ -175,12 +175,24 @@ Route::get('report/{mesu}/{mesd}/{mest}/{ano}', array(
 
 
 });*/
+
+Route::get('rango', array(
+  'before' => 'auth.fake',
+  
+  'uses' => 'PageController@ShowRango',
+));
+
 Route::get('ajax-subcat/{cat_id}', array(
   'before' => 'auth.fake',
   'as' => 'ajax-subcat',
   'uses' => 'PageController@showAjax',
 ));
 
+Route::get('exportRep/{repartidor}', array(
+  'before' => 'auth.fake',
+ 
+  'uses' => 'PageController@exelRep',
+));
 
 
 Route::get('receivesms/{phone}/{shornumber}/{telco}/{msg}', array(
