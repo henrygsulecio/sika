@@ -97,7 +97,7 @@ class PageController extends BaseController {
       ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
       ->leftJoin('repartidores', 'rutas.repartidor_id', '=', 'repartidores.id')
       ->groupBy(DB::raw('rutas.ruta_id'))
-      ->take(50)
+      //->take(50)
       //->skip(50)
       ->get();
       
