@@ -151,7 +151,7 @@ Route::get('info', array(
 ));
 
 Route::get('json', array(
-  'before' => 'auth.fake',
+  
   'as' => 'json',
   'uses' => 'PageController@showJson',
 ));
