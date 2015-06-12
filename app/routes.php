@@ -149,6 +149,12 @@ Route::get('info', array(
   'as' => 'info',
   'uses' => 'PageController@showInfo',
 ));
+
+Route::get('json', array(
+  'before' => 'auth.fake',
+  'as' => 'json',
+  'uses' => 'PageController@showJson',
+));
 Route::get('exportinfo', array(
   'before' => 'auth.fake',
  
