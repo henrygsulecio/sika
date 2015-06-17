@@ -19,10 +19,13 @@ class CreateRutasTable extends Migration {
 			$table->integer('cliente_id')->unsigned();
 			$table->integer('repartidor_id')->unsigned();
 			$table->string('pedido', 100);
-			$table->string('pedido', 100)->null;
+			$table->string('direccionu', 100)->null;
+			$table->string('direccion', 100)->null;
 			$table->string('nfactura', 100);
 			$table->string('norden', 100);
 			$table->string('nhr', 100);
+			$table->string('estado', 100)->null;
+			$table->string('comentario', 100)->null;
 			$table->timestamps();
 			//$table->primary(array('ruta_id'));
             //$table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');

@@ -71,7 +71,7 @@ class PageController extends BaseController {
     // info
     
     $users = DB::table('rutas')
-      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
+      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, rutas.estado, rutas.comentario, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
       //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
       ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
@@ -770,6 +770,34 @@ if ($user) {
    
   }
 
+  public function updateRutaJ($id, $estado, $comentario)
+  {
+    $response ='';
+    DB::beginTransaction();
+    try {
+      //Session::flash('result', 'Los datos han sido actualizados con EXITO');
+      
+        //Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // update
+        DB::table('rutas')
+          ->where('ruta_id', $id)
+          ->update(array(
+            
+            'estado' => $estado,
+            'comentario' => $comentario,
+          ));
+
+          $response='exito';
+      
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+      $response='error';
+    }
+    return Response::json(array('data' => $response));
+  }
+
 
   public function updateRuta()
   {
@@ -794,6 +822,7 @@ if ($user) {
      $nfactura = trim(Input::get('nfactura', ''));
       $norden = trim(Input::get('norden', ''));
        $nhr = trim(Input::get('nhr', ''));
+      $sub = trim(Input::get('subcategory', ''));
      
      Log::info('id: ' . $id);
      Log::info('cliente_id: ' .  $cliente_id);
@@ -822,6 +851,9 @@ if ($user) {
             'nhr' => $nhr,
             'updated_at' => $now,
             'direccion' => $direccion,
+            'direccionu' => $sub,
+            'estado' => '',
+            'comentario' => '',
           ));
       }else{
         
@@ -837,6 +869,9 @@ if ($user) {
             'nhr' => $nhr,
             'created_at' => $now,
             'direccion' => $direccion,
+            'direccionu' => $sub,
+            'estado' => '',
+            'comentario' => '',
             
             
           )

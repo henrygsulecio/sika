@@ -150,11 +150,28 @@ Route::get('info', array(
   'uses' => 'PageController@showInfo',
 ));
 
+//servicios web
 Route::get('json', array(
   
   'as' => 'json',
   'uses' => 'PageController@showJson',
 ));
+
+Route::get('loginJ', array(
+  
+  'as' => 'loginJ',
+  'uses' => 'PageController@LoginJson',
+));
+
+Route::any('insJ/{id}/{estado}/{comentario}', array(
+  'before' => 'auth.fake',
+  'as' => 'insJ',
+  'uses' => 'PageController@updateRutaJ',
+));
+
+//fin servicios
+
+
 Route::get('exportinfo', array(
   'before' => 'auth.fake',
  

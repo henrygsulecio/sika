@@ -34,7 +34,10 @@
         <th>Número Factura</th>
         <th>Número Orden</th>
         <th>Número sHR</th>
+
         <th>Piloto</th>
+        <th>Estado</th>
+        <th>Comentario</th>
         
         <th>Acciones</th>
         
@@ -58,7 +61,8 @@
         <td>{{ $user->norden}}</td>
         <td>{{ $user->nhr}}</td>
         <td>{{ $user->rname}} {{ $user->apellido}}</td>
-        
+        <td>{{ $user->estado}}</td>
+        <td>{{ $user->comentario}}</td>
         
         <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a>
             <a href="{{ URL::to('rutad/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
