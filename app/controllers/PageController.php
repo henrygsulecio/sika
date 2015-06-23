@@ -653,6 +653,8 @@ if ($user) {
 
   public function updateRutaJ($id, $estado, $comentario)
   {
+
+    $now = date('Y-m-d H:i:s');
     $response ='';
     DB::beginTransaction();
     try {
@@ -666,6 +668,7 @@ if ($user) {
             
             'estado' => $estado,
             'comentario' => $comentario,
+            'updated_at' => $now,
           ));
 
           $response='exito';
