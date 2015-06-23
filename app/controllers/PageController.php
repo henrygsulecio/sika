@@ -89,7 +89,7 @@ class PageController extends BaseController {
   public function showJson()
   {
     // info
-    
+    header('Access-Control-Allow-Origin: *');
     $users = DB::table('rutas')
       ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
       //->where('message.msg_out', '0')
