@@ -39,6 +39,12 @@ function goBack() {
     <form action="{{ URL::route('ruta') }}" class="form-horizontal" method="post" role="form">
       <input type="hidden" name="ruta_id" id="ruta_id" value="{{ $user->ruta_id }}">
 
+  <div class="form-group">
+        <label for="nruta" class="col-sm-2 control-label">Numero Ruta</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="nruta" id="nruta" placeholder="Numero Ruta" value="">
+        </div>
+      </div>
       
       <div class="form-group">
         <label for="marcacion" class="col-sm-2 control-label">Cliente</label>

@@ -71,7 +71,7 @@ class PageController extends BaseController {
     // info
     
     $users = DB::table('rutas')
-      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, rutas.estado, rutas.comentario, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
+      ->selectRaw('rutas.created_at,rutas.nrutas,rutas.updated_at, rutas.ruta_id, rutas.estado, rutas.comentario, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
       //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
       ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
@@ -88,8 +88,7 @@ class PageController extends BaseController {
 
   public function showJson()
   {
-    // info
-    header('Access-Control-Allow-Origin: *');
+    
     $users = DB::table('rutas')
       ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
       //->where('message.msg_out', '0')
@@ -478,125 +477,7 @@ public function ShowRango(){
    
   }
 
-  public function updateUser()
-  {
-
-    // parameters
-    $now = date('Y-m-d H:i:s');
-    $id = Input::get('user_id', 0);
-    $firstname = trim(Input::get('firstname', ''));
-    $lastname = trim(Input::get('lastname', ''));
-    $email = trim(Input::get('email', ''));
-    $dpi = trim(Input::get('dpi', ''));
-
-    //$birthday = Input::get('birthday');
-    $birthday = trim(Input::get('birthday', ''));
-    $license = trim(Input::get('license', ''));
-    $vehicle = trim(Input::get('vehicle', ''));
-    $workplace = trim(Input::get('workplace', ''));
-    $location = trim(Input::get('location', ''));
-    $tons = trim(Input::get('tons', ''));
-    $comments = trim(Input::get('comments', ''));
-
-
- 
-                
-          
-    Log::info('location: ' . $location);
-    // Log::info('first name: ' . $firstname);
-     //Log::info('birthday: ' . $birthday);
-
-    // validating
-    if ($id == 0) {
-      return Redirect::route('users');
-    }
-
-    // get user data
-    $user = DB::table('user')
-      ->selectRaw('*')
-      ->where('id', $id)
-      ->first();
-    $user_info = DB::table('user_info')
-      ->selectRaw('*')
-      ->where('user_id', $id)
-      ->first();
-
-    // exists?
-    if (! $user) {
-      return Redirect::route('users');
-    }
-
-    // update
-    DB::beginTransaction();
-    try {
-      // user_info
-      if ($user_info) {
-        Session::flash('result', 'Los datos han sido actualizados con EXITO');
-        // update
-        DB::table('user_info')
-          ->where('user_id', $id)
-          ->update(array(
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'email' => $email,
-            'dpi' => $dpi,
-            'birthday' => $birthday,
-            'license' => $license,
-            'vehicle' => $vehicle,
-            'workplace' => $workplace,
-            'location' => $location,
-            'tons' => $tons,
-            'comments' => $comments,
-          ));
-      } else {
-        Session::flash('result', 'Los datos han sido actualizados con EXITO');
-        // insert
-        DB::table('user_info')->insert(
-          array(
-            'user_id' => $id,
-            'firstname' => $firstname,
-            'lastname' => $lastname,
-            'email' => $email,
-            'dpi' => $dpi,
-            'birthday' => $birthday,
-            'license' => $license,
-            'vehicle' => $vehicle,
-            'workplace' => $workplace,
-            'location' => $location,
-            'tons' => $tons,
-            'comments' => $comments,
-          )
-        );
-      }
-
-      // user
-      DB::table('user')
-        ->where('id', $id)
-        ->update(array(
-          'updated_at' => $now,
-        ));
-
-      DB::commit();
-    } catch (Exception $e) {
-      DB::rollback();
-      Log::error($e);
-    }
-  //else de validacion
-
-    
-
-    // get user data
-    $user = $this->getUserData($id);
-
-    // display page 
-    return View::make('page.user', array(
-      'page' => 'user',
-      'user' => $user,
-    ));
-     
-   
-  }
-
+  
 
   public function updateCliente()
   {
@@ -815,6 +696,7 @@ if ($user) {
     // parameters
     $now = date('Y-m-d H:i:s');
     $id = Input::get('ruta_id', 0);
+    $nruta = trim(Input::get('nruta', ''));
     $cliente_id = trim(Input::get('cliente_id', ''));
     $repartidor_id = trim(Input::get('repartidor_id', ''));
     $pedido = trim(Input::get('pedido', ''));
@@ -843,6 +725,7 @@ if ($user) {
         DB::table('rutas')
           ->where('ruta_id', $id)
           ->update(array(
+            'nrutas' => $nruta,
             'cliente_id' => $cliente_id,
             'repartidor_id' => $repartidor_id,
             'pedido' => $pedido,
@@ -861,6 +744,7 @@ if ($user) {
         DB::table('rutas')->insert(
           array(
             //'user_id' => $id,
+            'nrutas' => $nruta,
             'cliente_id' => $cliente_id,
             'repartidor_id' => $repartidor_id,
             'pedido' => $pedido,

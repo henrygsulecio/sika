@@ -37,6 +37,12 @@
 
     <form action="{{ URL::route('ruta') }}" class="form-horizontal" method="post" role="form">
       
+  <div class="form-group">
+        <label for="nruta" class="col-sm-2 control-label">Numero Ruta</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="nruta" id="nruta" placeholder="Numero Ruta" value="">
+        </div>
+      </div>
 
       <!--clientes-->
       <div class="form-group">

@@ -21,6 +21,7 @@
   <div class="col-xs-12">
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
       <tr>
+        <th>ID</th>
         <th>Fecha creación</th>
         <th>Fecha actualización</th>
         <th>Ruta N.</th>
@@ -45,9 +46,10 @@
       </tr>
       @foreach ($users as $user)
       <tr>
+        <td>{{ $user->ruta_id}}</td>
        <td>{{ $user->created_at}}</td>
        <td>{{ $user->updated_at}}</td>
-       <td>{{ $user->ruta_id}}</td>
+       <td>{{ $user->nrutas}}</td>
        <td>{{ $user->nombre}}</td>
        
        <td>{{ $user->direccion}}</td>
