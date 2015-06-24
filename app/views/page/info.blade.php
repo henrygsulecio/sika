@@ -39,6 +39,7 @@
         <th>Piloto</th>
         <th>Estado</th>
         <th>Comentario</th>
+        <th>Check de entrega</th>
         
         <th>Acciones</th>
         
@@ -65,6 +66,7 @@
         <td>{{ $user->rname}} {{ $user->apellido}}</td>
         <td>{{ $user->estado}}</td>
         <td>{{ $user->comentario}}</td>
+        <td>{{ $user->checkP}}</td>
         
         <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a>
             <a href="{{ URL::to('rutad/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
