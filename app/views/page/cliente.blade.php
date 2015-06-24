@@ -54,6 +54,13 @@ function goBack() {
           <input type="text" class="form-control" name="direccion" id="direccion" placeholder="direccion" value="">
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="telefono" class="col-sm-2 control-label">Telefono</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="telefono" id="telefono" placeholder="telefono" value="">
+        </div>
+      </div>
       
        <div class="form-group">
         <label for="license" class="col-sm-2 control-label">Número de cuenta</label>

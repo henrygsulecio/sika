@@ -487,6 +487,7 @@ public function ShowRango(){
     $id = Input::get('id', 0);
     $nombre = trim(Input::get('nombre', ''));
     $direccion = trim(Input::get('direccion', ''));
+    $telefono = trim(Input::get('telefono', ''));
     $ncuenta = trim(Input::get('ncuenta', ''));
      //Log::info('first name: ' .  $nombre);
      //Log::info('birthday: ' .  $direccion);
@@ -523,6 +524,7 @@ if ($user) {
             'nombre' => $nombre,
             'direccion' => $direccion,
             'ncuenta' => $ncuenta,
+            'telefono' => $telefono,
             
             
           ));
@@ -535,6 +537,7 @@ if ($user) {
             'nombre' => $nombre,
             'direccion' => $direccion,
             'ncuenta' => $ncuenta,
+            'telefono' => $telefono,
             
             
           )

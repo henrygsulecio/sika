@@ -18,6 +18,7 @@ class CreateClientesTable extends Migration {
 			$table->string('nombre', 100);
 			$table->string('direccion', 100);
 			$table->string('ncuenta', 200);
+			$table->string('telefono', 200);
 			$table->boolean('disabled')->nullable()->default(0);
 			$table->timestamps();
 		});
