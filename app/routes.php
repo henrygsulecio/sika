@@ -109,6 +109,38 @@ Route::get('repartidor/{id}', array(
 ->where('id', '[0-9]+');
 //FIN REPARTIDORES
 
+//Ususarios
+
+Route::get('usuarios', array(
+  'before' => 'auth.fake',
+  'as' => 'usuarios',
+  'uses' => 'PageController@showInfoUsuario',
+));
+
+Route::get('usuario', array(
+  'before' => 'auth.fake',
+  'uses' => 'PageController@showUsuario',
+));
+
+Route::post('usuario', array(
+  'before' => 'auth.fake',
+  'as' => 'usuario',
+  'uses' => 'PageController@updateUsuarios',
+));
+
+Route::any('usuariosd/{id}', array(
+  'before' => 'auth.fake',
+  'as' => 'usuariosd',
+  'uses' => 'PageController@deleteUsuarios',
+));
+
+Route::get('usuario/{id}', array(
+  'before' => 'auth.fake',
+  'uses' => 'PageController@showUsuarios',
+))
+->where('id', '[0-9]+');
+//FIN usuarios
+
 Route::get('ruta', array(
   'before' => 'auth.fake',
   'uses' => 'PageController@showRuta',

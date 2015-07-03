@@ -19,6 +19,7 @@
          <li><a href="{{ URL::route('clientes') }}">Clientes</a></li>
          
          <li><a href="{{ URL::route('repartidores') }}">Repartidores</a></li>
+         <li><a href="{{ URL::route('usuarios') }}">Usuarios</a></li>
           <li><a href="{{ URL::route('dologout') }}">Logout</a></li>
         @endif
       </ul>

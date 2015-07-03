@@ -124,6 +124,25 @@ class PageController extends BaseController {
     ));
   }
 
+  public function showInfoUsuario()
+  {
+    // info
+    
+    $users = DB::table('usuarios')
+      ->selectRaw('usuarios.id, usuarios.nombre, usuarios.nickname, usuarios.repartidor_id')
+      //->where('message.msg_out', '0')
+      //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
+      
+      //->groupBy(DB::raw('rutas.ruta_id'))
+      ->paginate(20);
+     //Log::info("info datos: " . print_r($users, true));
+    // display page 
+    return View::make('page.infoUsuarios', array(
+      'page' => 'users',
+      'users' => $users,
+    ));
+  }
+
   public function showInfoCliente()
   {
     // info
@@ -181,6 +200,23 @@ public function showCliente()
     return View::make('page.repartidor', array(
       'page' => 'repartidor',
       //'user' => $user,
+    ));
+  }
+
+   public function showUsuario()
+  {
+    // get user data
+    //$user = $this->getUserData($id);
+$user = DB::table('repartidores')
+      ->selectRaw('*')
+      //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
+      //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
+      //->where('reguards.id', $id)
+      ->get(); 
+    // display page 
+    return View::make('page.usuario', array(
+      'page' => 'usuario',
+      'user' => $user,
     ));
   }
 
@@ -348,6 +384,26 @@ public function ShowRango(){
      'page' => 'repartidores',
       
       'user' => $repartidores,
+      
+    ));
+  }
+
+
+   public function showUsuarios($id)
+  {
+    
+
+      $usuarios = DB::table('usuarios')
+      ->selectRaw('*')
+     ->where('usuarios.id', $id)
+      ->first();
+    
+
+    // display page 
+    return View::make('page.usuarios', array(
+     'page' => 'usuarios',
+      
+      'user' => $usuarios,
       
     ));
   }
@@ -648,6 +704,97 @@ if ($user) {
     // display page 
     return View::make('page.repartidor', array(
       'page' => 'repartidor',
+      //'user' => $user,
+    ));
+     
+   
+  }
+
+
+  //USUARIOS
+    public function updateUsuarios()
+  {
+
+    // parameters
+    $now = date('Y-m-d H:i:s');
+    $id = Input::get('id', 0);
+    $nombre = trim(Input::get('nombre', ''));
+    $nickname = trim(Input::get('nickname', ''));
+    $pass = trim(Input::get('password', ''));
+    $repartidor_id = trim(Input::get('repartidor_id', ''));
+     //Log::info('first name: ' .  $nombre);
+     //Log::info('birthday: ' .  $direccion);
+     //Log::info('cienta: ' . $ncuenta);
+    $user = DB::table('usuarios')
+      ->selectRaw('*')
+      ->where('id', $id)
+      ->first();
+
+ // update
+    DB::beginTransaction();
+    try {
+      
+        Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // insert
+       /* DB::table('repartidores')->insert(
+          array(
+            //'user_id' => $id,
+            'nombre' => $nombre,
+            'apellido' => $apellido,
+            'ncarne' => $ncarne,
+            
+            
+          )
+        );*/
+
+      if ($user) {
+        Session::flash('result', 'Los datos han sido actualizados con EXITO');
+        // update
+        DB::table('usuarios')
+          ->where('id', $id)
+          ->update(array(
+            'id' => $id,
+            'nombre' => $nombre,
+            'nickname' => $nickname,
+            'password' => $pass,
+            'repartidor_id' => $repartidor_id,
+            
+            
+          ));
+      }else{
+        
+        // insert
+        DB::table('usuarios')->insert(
+          array(
+            
+            'nombre' => $nombre,
+            'nickname' => $nickname,
+            'password' => $pass,
+            'repartidor_id' => $repartidor_id,
+            
+            
+          )
+        );
+      }
+      
+
+    
+
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+    }
+  //else de validacion
+
+    
+
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.usuario', array(
+      'page' => 'usuario',
       //'user' => $user,
     ));
      

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration {
 			$table->string('nombre', 100);
 			$table->string('nickname', 100);
 			$table->string('password', 200);
+			$table->string('repartidor_id', 200);
 			$table->boolean('disabled')->nullable()->default(0);
 			$table->timestamps();
 		});
