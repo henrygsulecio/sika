@@ -23,7 +23,7 @@
       <tr>
         <th>ID</th>
         <th>Fecha creación</th>
-        <th>Fecha actualización</th>
+        <th class="entrega" style="background:#dedede;">Fecha actualización</th>
         <th>Ruta N.</th>
         <th>Nombre</th>
         <th>Direcci&oacute;n</th>
@@ -36,11 +36,11 @@
         <th>Número Orden</th>
         <th>Número sHR</th>
 
-        <th>Piloto</th>
-        <th>Estado</th>
-        <th>Comentario</th>
-        <th>Check de entrega</th>
-        <th>Foto</th>
+        <th class="entrega" style="background:#dedede;">Piloto</th>
+        <th class="entrega" style="background:#dedede;">Estado</th>
+        <th class="entrega" style="background:#dedede;">Comentario</th>
+        <th class="entrega" style="background:#dedede;">Check de entrega</th>
+        <th class="entrega" style="background:#dedede;">Foto</th>
         
         <th>Acciones</th>
         
