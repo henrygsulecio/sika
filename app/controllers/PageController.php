@@ -71,7 +71,7 @@ class PageController extends BaseController {
     // info
     
     $users = DB::table('rutas')
-      ->selectRaw('rutas.created_at,rutas.nrutas,rutas.checkP,rutas.updated_at, rutas.ruta_id, rutas.estado, rutas.comentario, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
+      ->selectRaw('rutas.created_at,rutas.img,rutas.nrutas,rutas.checkP,rutas.updated_at, rutas.ruta_id, rutas.estado, rutas.comentario, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
       //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
       ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
@@ -729,11 +729,15 @@ if ($user) {
      //Log::info('first name: ' .  $nombre);
      //Log::info('birthday: ' .  $direccion);
      //Log::info('cienta: ' . $ncuenta);
-    $user = DB::table('usuarios')
+    $useres = DB::table('usuarios')
       ->selectRaw('*')
       ->where('id', $id)
       ->first();
 
+     $user = DB::table('repartidores')
+      ->selectRaw('*')
+      ->where('repartidor_id', $id)
+      ->first();
  // update
     DB::beginTransaction();
     try {
@@ -751,7 +755,7 @@ if ($user) {
           )
         );*/
 
-      if ($user) {
+      if ($useres) {
         Session::flash('result', 'Los datos han sido actualizados con EXITO');
         // update
         DB::table('usuarios')
@@ -799,7 +803,7 @@ if ($user) {
     // display page 
     return View::make('page.usuario', array(
       'page' => 'usuario',
-      //'user' => $user,
+      'user' => $user,
     ));
      
    
