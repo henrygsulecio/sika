@@ -207,11 +207,9 @@ public function showCliente()
   {
     // get user data
     //$user = $this->getUserData($id);
-$user = DB::table('repartidores')
+      $user = DB::table('repartidores')
       ->selectRaw('*')
-      //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
-      //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
-      //->where('reguards.id', $id)
+
       ->get(); 
     // display page 
     return View::make('page.usuario', array(
@@ -393,6 +391,10 @@ public function ShowRango(){
   {
     
 
+      $user = DB::table('repartidores')
+      ->selectRaw('*')
+      ->get(); 
+
       $usuarios = DB::table('usuarios')
       ->selectRaw('*')
      ->where('usuarios.id', $id)
@@ -402,13 +404,13 @@ public function ShowRango(){
     // display page 
     return View::make('page.usuarios', array(
      'page' => 'usuarios',
-      
-      'user' => $usuarios,
+      'useres' => $usuarios,
+      'user' => $user,
       
     ));
   }
 
-  
+
 
     public function showReguardStatus($id)
   {
@@ -1162,7 +1164,7 @@ if ($user) {
     // display page 
     return View::make('page.usuario', array(
       'page' => 'usuario',
-      
+      'users' => $users,
       'user' => $user,
      
     ));

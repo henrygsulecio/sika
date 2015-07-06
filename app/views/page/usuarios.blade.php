@@ -37,28 +37,28 @@ function goBack() {
         </script>
 
     <form action="{{ URL::route('usuario') }}" class="form-horizontal" method="post" role="form">
-      <input type="hidden" name="id" id="id" value="{{ $user->id }}">
+      <input type="hidden" name="id" id="id" value="{{ $useres->id }}">
 
       
      <div class="form-group">
 
         <label for="nombre" class="col-sm-2 control-label">Nombre</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="">
+          <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="{{ $useres->nombre }}">
         </div>
       </div>
       
       <div class="form-group">
         <label for="license" class="col-sm-2 control-label">Nickname</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="nickname" id="nickname" placeholder="nickname" value="">
+          <input type="text" class="form-control" name="nickname" id="nickname" placeholder="nickname" value="{{ $useres->nickname }}">
         </div>
       </div>
 
       <div class="form-group">
         <label for="telefono" class="col-sm-2 control-label">password</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="password" id="password" placeholder="password" value="">
+          <input type="text" class="form-control" name="password" id="password" placeholder="password" value="{{ $useres->password }}">
         </div>
       </div>
       
