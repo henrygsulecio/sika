@@ -408,6 +408,8 @@ public function ShowRango(){
     ));
   }
 
+  
+
     public function showReguardStatus($id)
   {
     // get Reguards data
@@ -712,7 +714,7 @@ if ($user) {
 
 
   //USUARIOS
-    public function updateUsuarios()
+    public function updateUsuario()
   {
 
     // parameters
@@ -890,6 +892,7 @@ if ($user) {
             'direccionu' => $sub,
             'estado' => '',
             'comentario' => '',
+            'img' => '',
           ));
       }else{
         
@@ -909,6 +912,7 @@ if ($user) {
             'direccionu' => $sub,
             'estado' => '',
             'comentario' => '',
+            'img' => '',
             
             
           )
@@ -1103,6 +1107,63 @@ if ($user) {
       'page' => 'ruta',
       'clientes' => $clientes,
       'repartidores' => $repartidores,
+     
+    ));
+     
+   
+  }
+
+  //DELETE CLIENTE
+
+  public function deleteUsuarios($id)
+  {
+
+  
+    // parameters
+    
+     
+ 
+// get user data
+    $users = DB::table('usuarios')
+      ->selectRaw('*')
+      ->where('id', $id)
+      ->first();
+
+      $user = DB::table('repartidores')
+      ->selectRaw('*')
+      ->get();
+ // update
+    DB::beginTransaction();
+    try {
+     // Session::flash('result', 'Los datos han sido eliminados con EXITO');
+      if ($users) {
+        Session::flash('result', 'Los datos han sido eliminados con EXITO');
+        // update
+        DB::table('usuarios')
+          ->where('id', $id)
+          ->delete();
+          
+      }
+
+    
+
+      DB::commit();
+    } catch (Exception $e) {
+      DB::rollback();
+      Log::error($e);
+    }
+  //else de validacion
+
+    
+
+    // get user data
+    //$user = $this->getUserData($id);
+
+    // display page 
+    return View::make('page.usuario', array(
+      'page' => 'usuario',
+      
+      'user' => $user,
      
     ));
      

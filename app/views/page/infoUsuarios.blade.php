@@ -41,7 +41,7 @@
         
         
         
-        <td><a href="{{ URL::to('ususarios/' . $user->id) }}"><span class="label label-info">Actualizar</span></a>
+        <td><a href="{{ URL::to('usuarios/' . $user->id) }}"><span class="label label-info">Actualizar</span></a>
             <a href="{{ URL::to('usuariosd/' . $user->id) }}"><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>

@@ -125,7 +125,7 @@ Route::get('usuario', array(
 Route::post('usuario', array(
   'before' => 'auth.fake',
   'as' => 'usuario',
-  'uses' => 'PageController@updateUsuarios',
+  'uses' => 'PageController@updateUsuario',
 ));
 
 Route::any('usuariosd/{id}', array(

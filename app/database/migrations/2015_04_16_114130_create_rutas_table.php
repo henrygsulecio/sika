@@ -30,6 +30,7 @@ class CreateRutasTable extends Migration {
 			$table->string('long', 50)->null;
 			$table->string('lat', 50)->null;
 			$table->string('check', 300)->null;
+			$table->string('img', 300)->null;
 			$table->timestamps();
 			//$table->primary(array('ruta_id'));
             //$table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');

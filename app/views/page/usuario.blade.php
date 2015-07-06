@@ -51,7 +51,7 @@ function goBack() {
       <div class="form-group">
         <label for="license" class="col-sm-2 control-label">Nickname</label>
         <div class="col-sm-8">
-          <input type="text" class="form-control" name="nickname" id="nickname" placeholder="Nickname" value="">
+          <input type="text" class="form-control" name="nickname" id="nickname" placeholder="nickname" value="">
         </div>
       </div>
 
