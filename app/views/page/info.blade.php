@@ -70,7 +70,7 @@
         <td>{{ $user->checkP}}</td>
         <td><a href="http://tools.mobiletarget.me/json/{{ $user->img}}"><img src = "http://tools.mobiletarget.me/json/{{ $user->img}}"></img></a></td>
         
-        <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}"><span class="label label-info">Actualizar</span></a>
+        <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}" target="_blank"><span class="label label-info">Actualizar</span></a>
             <a href="{{ URL::to('rutad/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
