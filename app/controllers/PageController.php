@@ -758,7 +758,7 @@ if ($user) {
 
      $user = DB::table('repartidores')
       ->selectRaw('*')
-      ->where('repartidores.repartidor_id', $id)
+      ->where('id', $id)
       ->first();
  // update
     DB::beginTransaction();
