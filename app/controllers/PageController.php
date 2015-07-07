@@ -823,8 +823,8 @@ if ($user) {
     //$user = $this->getUserData($id);
 
     // display page 
-    return View::make('page.usuario', array(
-      'page' => 'usuario',
+    return View::make('page.updateUs', array(
+      'page' => 'updateUs',
       'user' => $user,
     ));
      
