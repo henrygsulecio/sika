@@ -86,6 +86,28 @@ class PageController extends BaseController {
     ));
   }
 
+
+  public function showInfoDetalle($id)
+  {
+    // info
+    
+    $users = DB::table('rutas')
+      ->selectRaw('rutas.created_at,rutas.img,rutas.nrutas,rutas.checkP,rutas.updated_at, rutas.ruta_id, rutas.estado, rutas.comentario, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
+      //->where('message.msg_out', '0')
+      //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
+      ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
+      ->leftJoin('repartidores', 'rutas.repartidor_id', '=', 'repartidores.id')
+      ->where('rutas.ruta_id',$id)
+      ->groupBy(DB::raw('rutas.ruta_id'))
+      ->paginate(20);
+     //Log::info("info datos: " . print_r($users, true));
+    // display page 
+    return View::make('page.infoDetalle', array(
+      'page' => 'infoDetalle',
+      'users' => $users,
+    ));
+  }
+
   public function showJson()
   {
     

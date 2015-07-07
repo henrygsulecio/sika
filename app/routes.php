@@ -182,6 +182,12 @@ Route::get('info', array(
   'uses' => 'PageController@showInfo',
 ));
 
+Route::get('infoDetalle/{id}', array(
+  'before' => 'auth.fake',
+  'as' => 'infoDetalle',
+  'uses' => 'PageController@showInfoDetalle',
+));
+
 //servicios web
 Route::get('json', array(
   

@@ -23,24 +23,18 @@
       <tr>
         <th>ID</th>
         <th>Fecha creación</th>
-        <th class="entrega" style="background:#dedede;">Fecha actualización</th>
+        
         <th>Ruta N.</th>
         <th>Nombre</th>
         <th>Direcci&oacute;n</th>
         
         
         <th>Cuenta</th>
-        <th>Pedido</th>
-        <th>Dirección de Entrega</th>
-        <th>Número Factura</th>
-        <th>Número Orden</th>
-        <th>Número sHR</th>
-
-        <th class="entrega" style="background:#dedede;">Piloto</th>
+        
         <th class="entrega" style="background:#dedede;">Estado</th>
-        <th class="entrega" style="background:#dedede;">Comentario</th>
+       
         <th class="entrega" style="background:#dedede;">Check de entrega</th>
-        <th class="entrega" style="background:#dedede;">Foto</th>
+       
         
         <th>Acciones</th>
         
@@ -50,7 +44,7 @@
       <tr>
         <td>{{ $user->ruta_id}}</td>
        <td>{{ $user->created_at}}</td>
-       <td>{{ $user->updated_at}}</td>
+       
        <td>{{ $user->nrutas}}</td>
        <td>{{ $user->nombre}}</td>
        
@@ -59,18 +53,14 @@
       
        
         <td>{{ $user->ncuenta}}</td>
-        <td>{{ $user->pedido}}</td>
-        <td>{{ $user->direc}}</td>
-        <td>{{ $user->nfactura}}</td>
-        <td>{{ $user->norden}}</td>
-        <td>{{ $user->nhr}}</td>
-        <td>{{ $user->rname}} {{ $user->apellido}}</td>
-        <td>{{ $user->estado}}</td>
-        <td>{{ $user->comentario}}</td>
-        <td>{{ $user->checkP}}</td>
-        <td><a href="http://tools.mobiletarget.me/json/{{ $user->img}}"><img src = "http://tools.mobiletarget.me/json/{{ $user->img}}"></img></a></td>
         
-        <td><a href="{{ URL::to('ruta/' . $user->ruta_id) }}" target="_blank"><span class="label label-info">Actualizar</span></a>
+        <td>{{ $user->estado}}</td>
+        
+        <td>{{ $user->checkP}}</td>
+        
+        
+        <td><a href="{{ URL::to('infoDetalle/' . $user->ruta_id) }}" target="_blank"><span class="label label-info">Ver</span></a>
+          <a href="{{ URL::to('ruta/' . $user->ruta_id) }}" target="_blank"><span class="label label-info">Actualizar</span></a>
             <a href="{{ URL::to('rutad/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
