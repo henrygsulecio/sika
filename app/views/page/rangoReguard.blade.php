@@ -21,7 +21,7 @@
       </div>
 <br/>
   <div class="form-group">
-        <label for="asta" class="col-sm-2 control-label">Asta</label>
+        <label for="asta" class="col-sm-2 control-label">Hasta</label>
         <div id="datetimepickerd" class="input-append date col-sm-8">
            <input type="text" class="form-control" name="asta" id="asta" placeholder="asta" value=""></input>
            <span class="add-on">

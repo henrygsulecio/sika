@@ -33,7 +33,7 @@
         
         <th class="entrega" style="background:#dedede;">Estado</th>
        
-        <th class="entrega" style="background:#dedede;">Check de entrega</th>
+        <th class="entrega" style="background:#dedede;">Ubicación entregado</th>
        
         
         <th>Acciones</th>

@@ -77,7 +77,7 @@
         <td>{{ $user->comentario}}</td>
         </tr>
       <tr>
-        <th class="entrega" style="background:#dedede;">Check de entrega</th>
+        <th class="entrega" style="background:#dedede;">Ubicación entregado</th>
         <td>{{ $user->checkP}}</td>
         </tr>
       <tr>
