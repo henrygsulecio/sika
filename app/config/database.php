@@ -90,10 +90,10 @@ return array(
 
 		'sqlsrv' => array(
 			'driver'   => 'sqlsrv',
-			'host'     => 'localhost',
-			'database' => 'database',
-			'username' => 'root',
-			'password' => '',
+			'host'     => 'GUATAPP03',
+			'database' => 'sika_rutas',
+			'username' => 'dadmingt',
+			'password' => '13579246',
 			'prefix'   => '',
 		),
 
