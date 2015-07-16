@@ -41,8 +41,8 @@
         <td>{{ $user->ncarne}}</td>
         
         
-        <td><a href="{{ URL::to('repartidor/' . $user->id) }}"><span class="label label-info">Actualizar</span></a>
-            <a href="{{ URL::to('repartidord/' . $user->id) }}"><span class="label label-warning">Eliminar</span></a>
+        <td><a href="{{ URL::to('repartidor/' . $user->id) }} target="_self""><span class="label label-info">Actualizar</span></a>
+            <a href="{{ URL::to('repartidord/' . $user->id) }} target="_self""><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
       @endforeach

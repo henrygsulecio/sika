@@ -82,7 +82,7 @@
         </tr>
       <tr>
         <th class="entrega" style="background:#dedede;">Foto</th>
-        <td><a href="http://tools.mobiletarget.me/json/{{ $user->img}}"><img src = "http://tools.mobiletarget.me/json/{{ $user->img}}"></img></a></td>
+        <td><a href="http://tools.mobiletarget.me/json/{{ $user->img}} target="_self""><img src = "http://tools.mobiletarget.me/json/{{ $user->img}}"></img></a></td>
         </tr>
    
       

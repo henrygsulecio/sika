@@ -52,18 +52,7 @@ return array(
 			'prefix'   => '',
 		),
 
-		/*'mysql' => array(
-			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'mobil_camion',
-			'username'  => 'mobil',
-			'password'  => 'MobilPass2K',
-			'charset'   => 'utf8',
-			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '',
-		),*/
-
-
+	
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',

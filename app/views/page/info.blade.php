@@ -77,15 +77,15 @@
   <div class="col-xs-12">
     <div class="col-xs-12">
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('exportinfo') }}"><span class"glyphicon glyphicon-star">Descargar Todo.csv</span></a>
+         <a href="{{ URL::to('exportinfo') }} target="_self"><span class"glyphicon glyphicon-star">Descargar Todo.csv</span></a>
     </button>
 
      <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('rango') }}"><span class"glyphicon glyphicon-star">Descargar por repartidor.csv</span></a>
+         <a href="{{ URL::to('rango') }} target="_self""><span class"glyphicon glyphicon-star">Descargar por repartidor.csv</span></a>
     </button>
 
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('rangof') }}"><span class"glyphicon glyphicon-star">Descargar por fecha.csv</span></a>
+         <a href="{{ URL::to('rangof') }} target="_self""><span class"glyphicon glyphicon-star">Descargar por fecha.csv</span></a>
     </button>
   </div>
 </div>

@@ -41,8 +41,8 @@
         
         
         
-        <td><a href="{{ URL::to('usuario/' . $user->id) }}"><span class="label label-info">Actualizar</span></a>
-            <a href="{{ URL::to('usuariosd/' . $user->id) }}"><span class="label label-warning">Eliminar</span></a>
+        <td><a href="{{ URL::to('usuario/' . $user->id) }} target="_self""><span class="label label-info">Actualizar</span></a>
+            <a href="{{ URL::to('usuariosd/' . $user->id) }} target="_self""><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
       @endforeach
