@@ -27,7 +27,7 @@
         <th>Ruta N.</th>
         <th>Nombre</th>
         <th>Direcci&oacute;n</th>
-        
+        <th>N. Factura</th>
         
         <th>Cuenta</th>
         
@@ -49,7 +49,7 @@
        <td>{{ $user->nombre}}</td>
        
        <td>{{ $user->direccion}}</td>
-       
+       <td>{{ $user->nfactura}}</td>
       
        
         <td>{{ $user->ncuenta}}</td>
