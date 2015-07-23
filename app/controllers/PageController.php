@@ -284,6 +284,7 @@ public function showCliente()
     //$user = $this->getUserData($id);
       $clientes = DB::table('clientes')
       ->selectRaw('*')
+
       //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
       //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
       //->where('reguards.id', $id)
@@ -294,6 +295,7 @@ public function showCliente()
       //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
       //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
       ->where('clientes.id', $cat_id)
+      ->orderByRaw('clientes.nombre ASC')
       ->get();
 
       $repartidores = DB::table('repartidores')
