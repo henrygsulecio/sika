@@ -7,7 +7,7 @@
   <div class="col-xs-12">
     <div class="col-xs-12">
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('cliente/') }}"><span class"glyphicon glyphicon-star">Agregar Cliente</span></a>
+         <a href="{{ URL::to('cliente/') }}"  target="_self"><span class"glyphicon glyphicon-star">Agregar Cliente</span></a>
     </button>
   </div>
 </div>
@@ -41,8 +41,8 @@
         <td>{{ $user->ncuenta}}</td>
         
         
-        <td><a href="{{ URL::to('cliente/' . $user->id) }}"><span class="label label-info">Actualizar</span></a>
-            <a href="{{ URL::to('cliented/' . $user->id) }}"><span class="label label-warning">Eliminar</span></a>
+        <td><a href="{{ URL::to('cliente/' . $user->id) }} " target="_self"><span class="label label-info">Actualizar</span></a>
+            <a href="{{ URL::to('cliented/' . $user->id) }} " target="_self"><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
       @endforeach

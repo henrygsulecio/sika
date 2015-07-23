@@ -7,7 +7,7 @@
   <div class="col-xs-12">
     <div class="col-xs-12">
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('ruta/') }}"><span class"glyphicon glyphicon-star">Agregar Ruta</span></a>
+         <a href="{{ URL::to('ruta/') }}" target="_self"><span class"glyphicon glyphicon-star">Agregar Ruta</span></a>
     </button>
   </div>
 </div>
@@ -59,9 +59,9 @@
         <td>{{ $user->checkP}}</td>
         
         
-        <td><a href="{{ URL::to('infoDetalle/' . $user->ruta_id) }}" target="_blank"><span class="label label-info">Ver</span></a>
-          <a href="{{ URL::to('ruta/' . $user->ruta_id) }}" target="_blank"><span class="label label-info">Actualizar</span></a>
-            <a href="{{ URL::to('rutad/' . $user->ruta_id) }}"><span class="label label-warning">Eliminar</span></a>
+        <td><a href="{{ URL::to('infoDetalle/' . $user->ruta_id) }}" target="_self"><span class="label label-info">Ver</span></a>
+          <a href="{{ URL::to('ruta/' . $user->ruta_id) }}" target="_self"><span class="label label-info">Actualizar</span></a>
+            <a href="{{ URL::to('rutad/' . $user->ruta_id) }}" target="_self"><span class="label label-warning">Eliminar</span></a>
         </td>
       </tr>
       @endforeach
@@ -77,15 +77,15 @@
   <div class="col-xs-12">
     <div class="col-xs-12">
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('exportinfo') }} target="_self"><span class"glyphicon glyphicon-star">Descargar Todo.csv</span></a>
+         <a href="{{ URL::to('exportinfo') }}" target="_self"><span class"glyphicon glyphicon-star">Descargar Todo.csv</span></a>
     </button>
 
      <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('rango') }} target="_self""><span class"glyphicon glyphicon-star">Descargar por repartidor.csv</span></a>
+         <a href="{{ URL::to('rango') }}" target="_self"><span class"glyphicon glyphicon-star">Descargar por repartidor.csv</span></a>
     </button>
 
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('rangof') }} target="_self""><span class"glyphicon glyphicon-star">Descargar por fecha.csv</span></a>
+         <a href="{{ URL::to('rangof') }}" target="_self"><span class"glyphicon glyphicon-star">Descargar por fecha.csv</span></a>
     </button>
   </div>
 </div>

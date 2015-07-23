@@ -40,7 +40,7 @@
   <div class="col-xs-12">
     
     <button type="button" class="btn btn-default btn-lg">
-         <a href="{{ URL::to('exportMessage') }}"><span class"glyphicon glyphicon-star">Descargar .csv</span></a>
+         <a href="{{ URL::to('exportMessage') }}" target="_self"><span class"glyphicon glyphicon-star">Descargar .csv</span></a>
     </button>
   </div>
 </div>
