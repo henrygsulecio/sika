@@ -1271,7 +1271,7 @@ $messages = DB::table('message')
 
  $users = DB::table('clientes')
       ->selectRaw('*')
-      ->where('clientes.nombre',$nombre)
+      ->where('clientes.nombre','LIKE', '%'.$nombre.'%')
       //->where('message.msg_out', '0')
       //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
       
