@@ -87,6 +87,10 @@
     <button type="button" class="btn btn-default btn-lg">
          <a href="{{ URL::to('rangof') }}" target="_self"><span class"glyphicon glyphicon-star">Descargar por fecha.csv</span></a>
     </button>
+
+    <button type="button" class="btn btn-default btn-lg">
+         <a href="{{ URL::to('rangoHR') }}" target="_self"><span class"glyphicon glyphicon-star">Descargar por HR.csv</span></a>
+    </button>
   </div>
 </div>
 </div>

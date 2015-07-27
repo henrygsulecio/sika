@@ -253,6 +253,8 @@ public function showCliente()
     ));
   }
 
+
+
   public function showRuta()
   {
     // get user data
@@ -323,6 +325,22 @@ public function ShowRango(){
 
        return View::make('page.rangoReport', array(
       'page' => 'page.rangoReport',
+      'repartidores'=>$repartidores,
+      
+    ));
+
+  }
+
+  public function ShowRangoHR(){
+
+
+      $repartidores = DB::table('rutas')
+      ->selectRaw('*')
+      
+      ->get();
+
+       return View::make('page.rangoHR', array(
+      'page' => 'page.rangoHR',
       'repartidores'=>$repartidores,
       
     ));
@@ -1346,6 +1364,57 @@ public function exelRep($repartidor){
 
    })->download('csv');//->download($tipo);
 }
+
+
+
+public function exelHR($hr){
+ // $data = DB::table('user_info')->get();
+   set_time_limit(0);
+  
+   
+
+     $data = DB::table('rutas')
+      ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
+      //->where('message.msg_out', '0')
+      //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
+      ->leftJoin('clientes', 'rutas.cliente_id', '=', 'clientes.id')
+      ->leftJoin('repartidores', 'rutas.repartidor_id', '=', 'repartidores.id')
+      ->where('nhr',$hr)
+      ->groupBy(DB::raw('rutas.ruta_id'))
+      ->get();
+   // Log::info("reguard: " . print_r($data, true));
+
+  Excel::create($hr, function($excel) use($data) {
+
+    $excel->sheet('Sheetname', function($sheet) use($data) {
+              
+        $sheet->cells('A2:k2', function($cells) {
+                          $cells->setFont(array(
+                                  'family'     => 'Calibri',
+                                  'size'       => '16',
+                                  'bold'       =>  true
+                              ));
+           });
+
+              //TITULOS
+              $sheet->fromArray(array( 
+                    array('Fecha creacion','actualizacion','ruta N.','nombre cliente','direccion cliente','numero de cuenta','pedido','factura','numero orden','numero hr', 'repartidor')
+              
+              ));
+            //CONTENIDO
+            foreach ($data as $user) 
+            {
+              
+              $sheet->fromArray(array(
+                      array($user->created_at,$user->updated_at,$user->ruta_id,$user->nombre,$user->direccion,$user->ncuenta,$user->pedido,$user->nfactura,$user->norden,$user->nhr, $user->rname, $user->apellido)
+              ));
+            }
+      });
+
+   })->download('csv');//->download($tipo);
+}
+
+
 
 public function exelFec($fu, $fd){
  // $data = DB::table('user_info')->get();

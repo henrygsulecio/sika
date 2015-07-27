@@ -267,6 +267,18 @@ Route::get('rangof', array(
   'uses' => 'PageController@showRangoFecha',
 ));
 
+Route::get('rangoHR', array(
+  'before' => 'auth.fake',
+  
+  'uses' => 'PageController@ShowRangoHR',
+));
+
+Route::get('exportHR/{hr}', array(
+  'before' => 'auth.fake',
+ 
+  'uses' => 'PageController@exelHR',
+));
+
 
 Route::get('receivesms/{phone}/{shornumber}/{telco}/{msg}', array(
   'as' => 'receivesms',
