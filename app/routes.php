@@ -165,9 +165,9 @@ Route::get('ruta/{id}', array(
 ->where('id', '[0-9]+');
 
 
-Route::get('search/{phone}', array(
+Route::get('search/{nombre}', array(
   'before' => 'auth.fake',
-  'uses' => 'PageController@SearchData',
+  'uses' => 'PageController@SearchCliente',
 ));
 //->where('phone', '[0-9]+’);
 

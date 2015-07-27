@@ -1263,6 +1263,32 @@ $messages = DB::table('message')
     }
 
 
+
+    ///BUSQUEDA CLIENTES
+    public function SearchCliente($nombre){
+
+    
+
+ $users = DB::table('clientes')
+      ->selectRaw('*')
+      ->where('clientes.nombre',$nombre)
+      //->where('message.msg_out', '0')
+      //->groupBy(DB::raw('user.id, user.phone, user.telco, user_info.firstname, user_info.lastname, user_info.location, user_info.vehicle, user_info.tons, user.disabled, user.created_at, point.updated_at, point.description'))
+      
+      //->groupBy(DB::raw('rutas.ruta_id'))
+      ->paginate(20);
+   
+// display page 
+    return View::make('page.infoCliente', array(
+      'page' => 'infoCliente',
+      'users' => $users,
+    ));
+    
+    
+
+    }
+
+
       public function SearchReguardsData($phone){
 
     if (strlen($phone)>=8){

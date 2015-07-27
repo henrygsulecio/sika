@@ -3,6 +3,7 @@
 @section('content')
 
 
+
 <div class="row">
   <div class="col-xs-12">
     <div class="col-xs-12">
@@ -12,7 +13,19 @@
   </div>
 </div>
 </div>
-
+<div class="row search">
+      <div class="col-sm-3">
+         <input type="text" id="buscar" class="form-control insearch"  placeholder="Nombre" style="
+    height: 33px;">
+      </div>
+     <button type="submit" class="btn btn-primary" onclick="trackChange(document.getElementById('buscar').value)">Buscar</button>
+     <script>
+         function trackChange(value)
+         {
+            window.open("search/"+value)
+         }
+     </script>
+</div>
 
 <div class="row">
   <div class="col-xs-12"><h4 class="resum bg-primary">Info</h4></div>
