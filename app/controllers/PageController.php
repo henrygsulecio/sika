@@ -261,6 +261,7 @@ public function showCliente()
     //$user = $this->getUserData($id);
       $clientes = DB::table('clientes')
       ->selectRaw('*')
+      ->orderByRaw('clientes.nombre ASC')
       //->leftJoin('user', 'reguards.user_id', '=', 'user.id')
       //->leftJoin('user_info', 'reguards.user_id', '=', 'user_info.user_id')
       //->where('reguards.id', $id)
@@ -353,22 +354,22 @@ public function ShowRango(){
   {
     $clientes = DB::table('clientes')
       ->selectRaw('*')
-      
+      ->orderByRaw('clientes.nombre ASC')
       ->get();
 
       $repartidores = DB::table('repartidores')
       ->selectRaw('*')
-     
+     ->orderByRaw('repartidores.nombre ASC')
       ->get();
 
       $clientess = DB::table('clientes')
       ->selectRaw('*')
-      
+      ->orderByRaw('clientes.nombre ASC')
       ->first();
 
       $repartidoress = DB::table('repartidores')
       ->selectRaw('*')
-     
+     ->orderByRaw('repartidores.nombre ASC')
       ->first();
     // get user data
       $user = DB::table('rutas')

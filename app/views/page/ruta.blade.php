@@ -61,6 +61,27 @@
           </select>
         </div>
       </div>
+      <!--fin clientes-->
+
+      <!--codigo cliente-->
+       <div class="form-group">
+        <label for="marcacion" class="col-sm-2 control-label">Codigo Cliente</label>
+        <div class="col-sm-8">
+         
+          <select name="cliente_ids" id="cliente_ids"  class="form-control">
+              @foreach ($clientes as $cliente)
+      
+        
+        <option value="{{ $cliente->id }}">{{ $cliente->ncuenta }}</option>
+      
+      @endforeach
+              
+              
+          </select>
+        </div>
+      </div>
+      <!--FIN CODIGO CLIENTE-->
+
       <!--Direcciones-->
       <div class="form-group">
         <label for="marcacion" class="col-sm-2 control-label">Direccion</label>
@@ -142,6 +163,27 @@
 
     <script type="text/javascript">
             $('#cliente_id').on('change',function(e){
+                 //console.log(e);
+                 var cat_id = e.target.value;
+
+                 //ajax
+                 //$.post('/ajax-subcat?cat_id='+$(this).val(), function(response){
+                 $.get('/ajax-subcat/' + cat_id, function(data){
+                  //correcto
+                  console.log(data);
+                  //$('#subcategory').empty();
+                  $.each(data,function(index, subcatObj){
+                      $('#subcategory').append('<option value="'+subcatObj.id+'">'+subcatObj.direccion+'</option>');
+
+                  });
+
+                 });
+            });
+
+        </script>
+
+         <script type="text/javascript">
+            $('#cliente_ids').on('change',function(e){
                  //console.log(e);
                  var cat_id = e.target.value;
 

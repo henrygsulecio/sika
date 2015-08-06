@@ -63,6 +63,26 @@ function goBack() {
         </div>
       </div>
 
+
+      <!--codigo cliente-->
+       <div class="form-group">
+        <label for="marcacion" class="col-sm-2 control-label">Codigo Cliente</label>
+        <div class="col-sm-8">
+          <label for="cliente_id" class="col-sm-4 control-label">Actual: {{ $clientess->nombre }}</label>
+          <select name="cliente_id" id="cliente_id"  class="form-control">
+              @foreach ($clientes as $cliente)
+      
+        
+        <option value="{{ $cliente->id }}">{{ $cliente->ncuenta }}</option>
+      
+      @endforeach
+              
+              
+          </select>
+        </div>
+      </div>
+      <!--FIN CODIGO CLIENTE-->
+
       <div class="form-group">
         <label for="marcacion" class="col-sm-2 control-label">Repartidor</label>
         <div class="col-sm-8">
