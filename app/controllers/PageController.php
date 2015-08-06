@@ -1446,6 +1446,13 @@ public function exelHR($hr){
 public function exelFec($fu, $fd){
  // $data = DB::table('user_info')->get();
    set_time_limit(0);
+
+$fu = strtotime ( '-1 day' , strtotime ( $fu ) ) ;
+$fu = date ( 'Y-m-d' , $fu );
+
+$fd = strtotime ( '+1 day' , strtotime ( $fd ) ) ;
+$fd = date ( 'Y-m-d' , $fd );
+
   $now = date('Y-m-d H:i:s');
    $data = DB::table('rutas')
       ->selectRaw('rutas.created_at,rutas.updated_at, rutas.ruta_id, clientes.nombre, clientes.direccion, clientes.ncuenta, rutas.pedido,rutas.direccion as direc, rutas.nfactura,rutas.norden,rutas.nhr, repartidores.nombre as rname, repartidores.apellido')
